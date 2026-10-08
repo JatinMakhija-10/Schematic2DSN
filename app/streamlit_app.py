@@ -55,88 +55,17 @@ if "reject_reason" not in st.session_state:
 
 def run_pipeline(input_path: str, out_dir: str) -> Optional[DesignIR]:
     """
-    Run stages S1-S9. Returns DesignIR or None on rejection.
-    Writes page.png and debug overlays to out_dir.
+    Run stages S1-S10 using the centralized core.pipeline runner.
     """
-    from vision.ingest import ingest, IngestError
+    from vision.ingest import IngestError
+    from core.pipeline import run_pipeline as exec_pipeline
 
     try:
-        meta = ingest(input_path, out_dir)
+        ir = exec_pipeline(input_path, out_dir, generate_tcl=True)
+        return ir
     except IngestError as e:
         st.session_state.reject_reason = str(e)
         return None
-
-    try:
-        import cv2
-        img_path = os.path.join(out_dir, "page.png")
-
-        if meta.mode == "vector":
-            from vision.vector_extract import extract_vector_text, extract_vector_wires
-            from vision.vector_extract import draw_text_overlay, draw_wire_overlay
-            texts = extract_vector_text(input_path)
-            texts_path = os.path.join(out_dir, "texts.json")
-            Path(texts_path).write_text(texts.model_dump_json(indent=2))
-            wires = extract_vector_wires(input_path)
-            wires_path = os.path.join(out_dir, "wires.json")
-            Path(wires_path).write_text(wires.model_dump_json(indent=2))
-            draw_text_overlay(img_path, texts, os.path.join(out_dir, "debug", "text.png"))
-            draw_wire_overlay(img_path, wires, os.path.join(out_dir, "debug", "wires.png"))
-        else:
-            from vision.ocr import run_ocr, draw_ocr_overlay
-            from vision.wires import detect_wires, draw_wire_overlay
-            texts = run_ocr(img_path)
-            texts_path = os.path.join(out_dir, "texts.json")
-            Path(texts_path).write_text(texts.model_dump_json(indent=2))
-            wires = detect_wires(img_path, None, texts)
-            wires_path = os.path.join(out_dir, "wires.json")
-            Path(wires_path).write_text(wires.model_dump_json(indent=2))
-            draw_ocr_overlay(img_path, texts, os.path.join(out_dir, "debug", "text.png"))
-            draw_wire_overlay(img_path, wires, os.path.join(out_dir, "debug", "wires.png"))
-
-        from vision.symbols_cv import detect_symbols, draw_symbol_overlay
-        from vision.junctions import detect_junctions, draw_junction_overlay
-
-        symbols = detect_symbols(img_path, texts)
-        syms_path = os.path.join(out_dir, "symbols.json")
-        Path(syms_path).write_text(symbols.model_dump_json(indent=2))
-        draw_symbol_overlay(img_path, symbols, os.path.join(out_dir, "debug", "symbols.png"))
-
-        junctions = detect_junctions(img_path, wires)
-        junc_path = os.path.join(out_dir, "junctions.json")
-        Path(junc_path).write_text(junctions.model_dump_json(indent=2))
-        draw_junction_overlay(img_path, junctions, os.path.join(out_dir, "debug", "junctions.png"))
-
-        # S8 associate
-        from circuit.associate import associate
-        components, assoc_warnings = associate(symbols, texts)
-
-        # S7 graph (simplified: no pin map yet)
-        from circuit.graph import build_graph
-        nets, graph_warnings = build_graph(wires, junctions, symbols, texts, None)
-
-        # Build IR
-        ir = DesignIR(
-            design=DesignInfo(name=Path(input_path).stem),
-            components=components,
-            nets=nets,
-            warnings=assoc_warnings + graph_warnings,
-            metadata=DesignMetadata(
-                source=input_path,
-                mode=meta.mode,
-                confidence=0.0,
-                ocr_confidence=1.0 if meta.mode == "vector" else 0.0
-            )
-        )
-
-        # S9 validate
-        from circuit.validate import validate
-        ir, confidence = validate(ir)
-
-        design_path = os.path.join(out_dir, "design.json")
-        Path(design_path).write_text(ir.model_dump_json(indent=2))
-
-        return ir
-
     except Exception as e:
         st.session_state.reject_reason = f"Pipeline error: {e}"
         return None

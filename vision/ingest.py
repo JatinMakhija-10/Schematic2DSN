@@ -66,6 +66,9 @@ def ingest(input_path: str, out_dir: str) -> PageMeta:
     debug_dir = out / 'debug'
     debug_dir.mkdir(exist_ok=True)
 
+    if not path.is_file():
+        raise IngestError(f"FILE_NOT_FOUND: Input file does not exist: {path}")
+
     suffix = path.suffix.lower()
 
     if suffix == '.pdf':

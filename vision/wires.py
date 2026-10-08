@@ -72,7 +72,6 @@ def detect_wires(
     """
     import cv2
     import numpy as np
-    from skimage.morphology import skeletonize
 
     _reset_wire_counter()
     cfg = DEFAULT_CONFIG.wire
@@ -109,8 +108,23 @@ def detect_wires(
             y1 = min(h, int(text.bbox.y1) + dilate_px)
             mask[y0:y1, x0:x1] = 0
 
-    # Skeletonize
-    skel = skeletonize(mask > 0).astype(np.uint8) * 255
+    # Skeletonize (using skimage if available, else OpenCV morphological thinning)
+    try:
+        from skimage.morphology import skeletonize
+        skel = skeletonize(mask > 0).astype(np.uint8) * 255
+    except ImportError:
+        # OpenCV morphological skeleton
+        skel = np.zeros(mask.shape, np.uint8)
+        element = cv2.getStructuringElement(cv2.MORPH_CROSS, (3, 3))
+        temp_img = mask.copy()
+        while True:
+            eroded = cv2.erode(temp_img, element)
+            opened = cv2.morphologyEx(eroded, cv2.MORPH_OPEN, element)
+            temp = cv2.subtract(eroded, opened)
+            skel = cv2.bitwise_or(skel, temp)
+            temp_img = eroded.copy()
+            if cv2.countNonZero(temp_img) == 0:
+                break
 
     # Probabilistic Hough
     min_length = max(10, int(cfg.hough_min_length_factor * line_thickness * 8))
@@ -127,7 +141,10 @@ def detect_wires(
     if lines is not None:
         snap_tol = cfg.snap_angle_degrees
         for line in lines:
-            x0, y0, x1, y1 = line[0]
+            pts = line[0] if len(line.shape) > 1 and line.shape[0] == 1 else line
+            if len(pts) != 4:
+                pts = pts.flatten()
+            x0, y0, x1, y1 = int(pts[0]), int(pts[1]), int(pts[2]), int(pts[3])
             dx = abs(x1 - x0)
             dy = abs(y1 - y0)
             import math
