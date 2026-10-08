@@ -1,0 +1,19 @@
+{
+  "schema": "1.0",
+  "comment": "Maps symbol_class to the OrCAD library and symbol name for Tcl placement.",
+  "map": {
+    "RESISTOR":  {"library": "COMPETITION", "symbol": "R"},
+    "CAPACITOR": {"library": "COMPETITION", "symbol": "C"},
+    "INDUCTOR":  {"library": "COMPETITION", "symbol": "L"},
+    "DIODE":     {"library": "COMPETITION", "symbol": "D"},
+    "LED":       {"library": "COMPETITION", "symbol": "LED"},
+    "NPN":       {"library": "COMPETITION", "symbol": "NPN"},
+    "PNP":       {"library": "COMPETITION", "symbol": "PNP"},
+    "NMOS":      {"library": "COMPETITION", "symbol": "NMOS"},
+    "PMOS":      {"library": "COMPETITION", "symbol": "PMOS"},
+    "OPAMP":     {"library": "COMPETITION", "symbol": "OPAMP"},
+    "CONNECTOR": {"library": "COMPETITION", "symbol": "CONN_1X2"},
+    "GROUND":    {"library": "COMPETITION", "symbol": "GND"},
+    "VCC":       {"library": "COMPETITION", "symbol": "VCC"}
+  }
+}

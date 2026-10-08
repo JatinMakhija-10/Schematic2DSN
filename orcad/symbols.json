@@ -1,0 +1,257 @@
+{
+  "schema": "1.0",
+  "symbols": {
+    "RESISTOR": {
+      "library_name": "COMPETITION",
+      "symbol_name": "R",
+      "nominal_body_length_mils": 200,
+      "pins": [
+        {"number": "1", "function": "A"},
+        {"number": "2", "function": "B"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}},
+        "rot180_mirror_false":{"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot0_mirror_true":   {"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}}
+      }
+    },
+    "CAPACITOR": {
+      "library_name": "COMPETITION",
+      "symbol_name": "C",
+      "nominal_body_length_mils": 200,
+      "pins": [
+        {"number": "1", "function": "PLUS"},
+        {"number": "2", "function": "MINUS"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}},
+        "rot180_mirror_false":{"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot0_mirror_true":   {"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}}
+      }
+    },
+    "INDUCTOR": {
+      "library_name": "COMPETITION",
+      "symbol_name": "L",
+      "nominal_body_length_mils": 200,
+      "pins": [
+        {"number": "1", "function": "A"},
+        {"number": "2", "function": "B"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}},
+        "rot180_mirror_false":{"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot0_mirror_true":   {"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}}
+      }
+    },
+    "DIODE": {
+      "library_name": "COMPETITION",
+      "symbol_name": "D",
+      "nominal_body_length_mils": 200,
+      "pins": [
+        {"number": "1", "function": "ANODE"},
+        {"number": "2", "function": "CATHODE"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}},
+        "rot180_mirror_false":{"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot0_mirror_true":   {"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}}
+      }
+    },
+    "LED": {
+      "library_name": "COMPETITION",
+      "symbol_name": "LED",
+      "nominal_body_length_mils": 200,
+      "pins": [
+        {"number": "1", "function": "ANODE"},
+        {"number": "2", "function": "CATHODE"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}},
+        "rot180_mirror_false":{"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot0_mirror_true":   {"1": {"dx": 100, "dy": 0}, "2": {"dx": -100, "dy": 0}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": -100}, "2": {"dx": 0, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -100, "dy": 0}, "2": {"dx": 100, "dy": 0}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": 100}, "2": {"dx": 0, "dy": -100}}
+      }
+    },
+    "NPN": {
+      "library_name": "COMPETITION",
+      "symbol_name": "NPN",
+      "nominal_body_length_mils": 300,
+      "pins": [
+        {"number": "1", "function": "BASE"},
+        {"number": "2", "function": "COLLECTOR"},
+        {"number": "3", "function": "EMITTER"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": 150}, "3": {"dx": 100, "dy": -150}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": 100}, "3": {"dx": 150, "dy": 100}},
+        "rot180_mirror_false":{"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": -150}, "3": {"dx": -100, "dy": 150}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": -100}, "3": {"dx": -150, "dy": -100}},
+        "rot0_mirror_true":   {"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": 150}, "3": {"dx": -100, "dy": -150}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": 100}, "3": {"dx": -150, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": -150}, "3": {"dx": 100, "dy": 150}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": -100}, "3": {"dx": 150, "dy": -100}}
+      }
+    },
+    "PNP": {
+      "library_name": "COMPETITION",
+      "symbol_name": "PNP",
+      "nominal_body_length_mils": 300,
+      "pins": [
+        {"number": "1", "function": "BASE"},
+        {"number": "2", "function": "COLLECTOR"},
+        {"number": "3", "function": "EMITTER"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": 150}, "3": {"dx": 100, "dy": -150}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": 100}, "3": {"dx": 150, "dy": 100}},
+        "rot180_mirror_false":{"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": -150}, "3": {"dx": -100, "dy": 150}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": -100}, "3": {"dx": -150, "dy": -100}},
+        "rot0_mirror_true":   {"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": 150}, "3": {"dx": -100, "dy": -150}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": 100}, "3": {"dx": -150, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": -150}, "3": {"dx": 100, "dy": 150}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": -100}, "3": {"dx": 150, "dy": -100}}
+      }
+    },
+    "NMOS": {
+      "library_name": "COMPETITION",
+      "symbol_name": "NMOS",
+      "nominal_body_length_mils": 300,
+      "pins": [
+        {"number": "1", "function": "GATE"},
+        {"number": "2", "function": "DRAIN"},
+        {"number": "3", "function": "SOURCE"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": 150}, "3": {"dx": 100, "dy": -150}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": 100}, "3": {"dx": 150, "dy": 100}},
+        "rot180_mirror_false":{"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": -150}, "3": {"dx": -100, "dy": 150}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": -100}, "3": {"dx": -150, "dy": -100}},
+        "rot0_mirror_true":   {"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": 150}, "3": {"dx": -100, "dy": -150}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": 100}, "3": {"dx": -150, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": -150}, "3": {"dx": 100, "dy": 150}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": -100}, "3": {"dx": 150, "dy": -100}}
+      }
+    },
+    "PMOS": {
+      "library_name": "COMPETITION",
+      "symbol_name": "PMOS",
+      "nominal_body_length_mils": 300,
+      "pins": [
+        {"number": "1", "function": "GATE"},
+        {"number": "2", "function": "DRAIN"},
+        {"number": "3", "function": "SOURCE"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": 150}, "3": {"dx": 100, "dy": -150}},
+        "rot90_mirror_false": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": 100}, "3": {"dx": 150, "dy": 100}},
+        "rot180_mirror_false":{"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": -150}, "3": {"dx": -100, "dy": 150}},
+        "rot270_mirror_false":{"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": -100}, "3": {"dx": -150, "dy": -100}},
+        "rot0_mirror_true":   {"1": {"dx": 150, "dy": 0}, "2": {"dx": -100, "dy": 150}, "3": {"dx": -100, "dy": -150}},
+        "rot90_mirror_true":  {"1": {"dx": 0, "dy": 150}, "2": {"dx": 150, "dy": 100}, "3": {"dx": -150, "dy": 100}},
+        "rot180_mirror_true": {"1": {"dx": -150, "dy": 0}, "2": {"dx": 100, "dy": -150}, "3": {"dx": 100, "dy": 150}},
+        "rot270_mirror_true": {"1": {"dx": 0, "dy": -150}, "2": {"dx": -150, "dy": -100}, "3": {"dx": 150, "dy": -100}}
+      }
+    },
+    "OPAMP": {
+      "library_name": "COMPETITION",
+      "symbol_name": "OPAMP",
+      "nominal_body_length_mils": 400,
+      "pins": [
+        {"number": "1", "function": "IN_MINUS"},
+        {"number": "2", "function": "IN_PLUS"},
+        {"number": "3", "function": "VS_PLUS"},
+        {"number": "4", "function": "VS_MINUS"},
+        {"number": "5", "function": "OUT"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": -200, "dy": 100}, "2": {"dx": -200, "dy": -100}, "3": {"dx": 0, "dy": 200}, "4": {"dx": 0, "dy": -200}, "5": {"dx": 200, "dy": 0}},
+        "rot90_mirror_false": {"1": {"dx": -100, "dy": -200}, "2": {"dx": 100, "dy": -200}, "3": {"dx": -200, "dy": 0}, "4": {"dx": 200, "dy": 0}, "5": {"dx": 0, "dy": 200}},
+        "rot180_mirror_false":{"1": {"dx": 200, "dy": -100}, "2": {"dx": 200, "dy": 100}, "3": {"dx": 0, "dy": -200}, "4": {"dx": 0, "dy": 200}, "5": {"dx": -200, "dy": 0}},
+        "rot270_mirror_false":{"1": {"dx": 100, "dy": 200}, "2": {"dx": -100, "dy": 200}, "3": {"dx": 200, "dy": 0}, "4": {"dx": -200, "dy": 0}, "5": {"dx": 0, "dy": -200}},
+        "rot0_mirror_true":   {"1": {"dx": 200, "dy": 100}, "2": {"dx": 200, "dy": -100}, "3": {"dx": 0, "dy": 200}, "4": {"dx": 0, "dy": -200}, "5": {"dx": -200, "dy": 0}},
+        "rot90_mirror_true":  {"1": {"dx": -100, "dy": 200}, "2": {"dx": 100, "dy": 200}, "3": {"dx": -200, "dy": 0}, "4": {"dx": 200, "dy": 0}, "5": {"dx": 0, "dy": -200}},
+        "rot180_mirror_true": {"1": {"dx": -200, "dy": -100}, "2": {"dx": -200, "dy": 100}, "3": {"dx": 0, "dy": -200}, "4": {"dx": 0, "dy": 200}, "5": {"dx": 200, "dy": 0}},
+        "rot270_mirror_true": {"1": {"dx": 100, "dy": -200}, "2": {"dx": -100, "dy": -200}, "3": {"dx": 200, "dy": 0}, "4": {"dx": -200, "dy": 0}, "5": {"dx": 0, "dy": 200}}
+      }
+    },
+    "CONNECTOR": {
+      "library_name": "COMPETITION",
+      "symbol_name": "CONN_1X2",
+      "nominal_body_length_mils": 200,
+      "pins": [
+        {"number": "1", "function": "P1"},
+        {"number": "2", "function": "P2"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": 100, "dy": 50}, "2": {"dx": 100, "dy": -50}},
+        "rot90_mirror_false": {"1": {"dx": -50, "dy": 100}, "2": {"dx": 50, "dy": 100}},
+        "rot180_mirror_false":{"1": {"dx": -100, "dy": -50}, "2": {"dx": -100, "dy": 50}},
+        "rot270_mirror_false":{"1": {"dx": 50, "dy": -100}, "2": {"dx": -50, "dy": -100}},
+        "rot0_mirror_true":   {"1": {"dx": -100, "dy": 50}, "2": {"dx": -100, "dy": -50}},
+        "rot90_mirror_true":  {"1": {"dx": -50, "dy": -100}, "2": {"dx": 50, "dy": -100}},
+        "rot180_mirror_true": {"1": {"dx": 100, "dy": -50}, "2": {"dx": 100, "dy": 50}},
+        "rot270_mirror_true": {"1": {"dx": 50, "dy": 100}, "2": {"dx": -50, "dy": 100}}
+      }
+    },
+    "GROUND": {
+      "library_name": "COMPETITION",
+      "symbol_name": "GND",
+      "nominal_body_length_mils": 100,
+      "pins": [
+        {"number": "1", "function": "PWR"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": 0, "dy": 100}},
+        "rot90_mirror_false": {"1": {"dx": -100, "dy": 0}},
+        "rot180_mirror_false":{"1": {"dx": 0, "dy": -100}},
+        "rot270_mirror_false":{"1": {"dx": 100, "dy": 0}},
+        "rot0_mirror_true":   {"1": {"dx": 0, "dy": 100}},
+        "rot90_mirror_true":  {"1": {"dx": 100, "dy": 0}},
+        "rot180_mirror_true": {"1": {"dx": 0, "dy": -100}},
+        "rot270_mirror_true": {"1": {"dx": -100, "dy": 0}}
+      }
+    },
+    "VCC": {
+      "library_name": "COMPETITION",
+      "symbol_name": "VCC",
+      "nominal_body_length_mils": 100,
+      "pins": [
+        {"number": "1", "function": "PWR"}
+      ],
+      "pin_offsets": {
+        "rot0_mirror_false":  {"1": {"dx": 0, "dy": -100}},
+        "rot90_mirror_false": {"1": {"dx": 100, "dy": 0}},
+        "rot180_mirror_false":{"1": {"dx": 0, "dy": 100}},
+        "rot270_mirror_false":{"1": {"dx": -100, "dy": 0}},
+        "rot0_mirror_true":   {"1": {"dx": 0, "dy": -100}},
+        "rot90_mirror_true":  {"1": {"dx": -100, "dy": 0}},
+        "rot180_mirror_true": {"1": {"dx": 0, "dy": 100}},
+        "rot270_mirror_true": {"1": {"dx": 100, "dy": 0}}
+      }
+    }
+  }
+}
