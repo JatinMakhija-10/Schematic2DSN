@@ -224,10 +224,20 @@ with tab_tcl:
         value="orcad/library/COMPETITION.olb"
     )
 
+    mode_choice = st.radio(
+        "Export Mode",
+        ["Mode A: Stub + Net Alias (Robust)", "Mode B: Routed Polylines (Clean)"],
+        index=0
+    )
+
     if st.button("Generate Tcl Script"):
         with st.spinner("Generating..."):
             try:
-                tcl = generate_mode_a(ir, lib_path=lib_path)
+                from orcad.tcl_gen import generate_mode_b
+                if "Mode B" in mode_choice:
+                    tcl = generate_mode_b(ir, lib_path=lib_path)
+                else:
+                    tcl = generate_mode_a(ir, lib_path=lib_path)
                 st.session_state.tcl_script = tcl
             except Exception as e:
                 st.error(f"Generation failed: {e}")

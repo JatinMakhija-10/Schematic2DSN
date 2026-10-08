@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "common_emitter",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "1k",
+      "unit": 1,
+      "position": {
+        "x": 4300.0,
+        "y": 2600.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4300.0,
+            "y": 2700.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4300.0,
+            "y": 2500.0
+          },
+          "net": "COLLECTOR"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "100k",
+      "unit": 1,
+      "position": {
+        "x": 3800.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3700.0,
+            "y": 3000.0
+          },
+          "net": "VIN"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3900.0,
+            "y": 3000.0
+          },
+          "net": "BASE"
+        }
+      ]
+    },
+    {
+      "id": "Q1",
+      "symbol_class": "NPN",
+      "value": "2N2222",
+      "unit": 1,
+      "position": {
+        "x": 4300.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "BASE",
+          "pos": {
+            "x": 4150.0,
+            "y": 3000.0
+          },
+          "net": "BASE"
+        },
+        {
+          "number": "2",
+          "function": "COLLECTOR",
+          "pos": {
+            "x": 4400.0,
+            "y": 2850.0
+          },
+          "net": "COLLECTOR"
+        },
+        {
+          "number": "3",
+          "function": "EMITTER",
+          "pos": {
+            "x": 4400.0,
+            "y": 3150.0
+          },
+          "net": "GND"
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4300.0,
+        "y": 2400.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4300.0,
+            "y": 2300.0
+          },
+          "net": "VCC"
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4400.0,
+        "y": 3300.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4400.0,
+            "y": 3400.0
+          },
+          "net": "GND"
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "R1",
+          "1"
+        ],
+        [
+          "VCC1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "COLLECTOR",
+      "auto_named": true,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "Q1",
+          "2"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VIN",
+      "auto_named": false,
+      "pins": [
+        [
+          "R2",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VIN",
+          "pos": {
+            "x": 3700.0,
+            "y": 3000.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "BASE",
+      "auto_named": true,
+      "pins": [
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "Q1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "Q1",
+          "3"
+        ],
+        [
+          "GND1",
+          "1"
+        ]
+      ],
+      "labels": []
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}

@@ -233,6 +233,107 @@ def generate_mode_a(ir: DesignIR, lib_path: str, output_path: Optional[str] = No
     return script
 
 
+def generate_mode_b(
+    ir: DesignIR,
+    wires_file: Optional[str] = None,
+    lib_path: str = "COMPETITION.olb",
+    output_path: Optional[str] = None
+) -> str:
+    """
+    Generate Mode B Tcl: places parts and routes orthogonal wire segments directly
+    between pin ends and junctions using coordinate transformed paths.
+    """
+    cfg = DEFAULT_CONFIG.orcad
+    grid = cfg.grid_mils
+    lines: List[str] = [TCL_HEADER]
+
+    map_path = Path(__file__).parent / "symbol_map.json"
+    with open(map_path) as f:
+        sym_map = json.load(f)["map"]
+
+    lines.append(_comment(f"Design: {ir.design.name} (Mode B Routed)"))
+    lines.append(_comment(f"Components: {len(ir.components)}, Nets: {len(ir.nets)}"))
+    lines.append("")
+
+    # 1. Place all parts
+    for comp in ir.components:
+        sym_info = sym_map.get(comp.symbol_class)
+        if sym_info is None:
+            raise UnknownTclCommand(
+                f"ERROR:NO_SYMBOL_MAP code=NO_LIBRARY_MAPPING "
+                f"component={comp.id} class={comp.symbol_class}"
+            )
+        library = sym_info["library"]
+        symbol = sym_info["symbol"]
+
+        cx = _snap(comp.position.x, grid)
+        cy = _snap(comp.position.y, grid)
+
+        lines.append(_comment(f"--- {comp.id} ({comp.symbol_class}) ---"))
+        lines.append(_place_part(cx, cy, library, symbol, comp.rotation, comp.mirror))
+        lines.append(_select_object(cx, cy))
+        lines.append(_set_refdes(comp.id))
+        if comp.value:
+            lines.append(_set_value(comp.value))
+        lines.append(_end_command())
+
+    lines.append("")
+    lines.append(_comment("--- Routed Wire Connections ---"))
+
+    # 2. Connect pins belonging to the same net with orthogonal segments
+    drawn_wires: set = set()
+    for net in ir.nets:
+        # Collect all pin positions for this net
+        net_pin_positions = []
+        for pref in net.pins:
+            c_id, p_num = pref[0], pref[1]
+            for c in ir.components:
+                if c.id == c_id:
+                    for p in c.pins:
+                        if p.number == p_num:
+                            net_pin_positions.append((_snap(p.pos.x, grid), _snap(p.pos.y, grid)))
+
+        # Draw connecting orthogonal wires between sequential pin endpoints
+        if len(net_pin_positions) >= 2:
+            lines.append(_comment(f"Net: {net.name}"))
+            for i in range(len(net_pin_positions) - 1):
+                p0 = net_pin_positions[i]
+                p1 = net_pin_positions[i + 1]
+                if p0 == p1:
+                    continue
+
+                # Ensure orthogonality: route via L-bend if needed
+                if p0[0] != p1[0] and p0[1] != p1[1]:
+                    # Corner point
+                    corner = (p1[0], p0[1])
+                    seg1 = (min(p0, corner), max(p0, corner))
+                    seg2 = (min(corner, p1), max(corner, p1))
+                    if seg1 not in drawn_wires:
+                        lines.append(_place_wire(p0[0], p0[1], corner[0], corner[1]))
+                        drawn_wires.add(seg1)
+                    if seg2 not in drawn_wires:
+                        lines.append(_place_wire(corner[0], corner[1], p1[0], p1[1]))
+                        drawn_wires.add(seg2)
+                else:
+                    seg = (min(p0, p1), max(p0, p1))
+                    if seg not in drawn_wires:
+                        lines.append(_place_wire(p0[0], p0[1], p1[0], p1[1]))
+                        drawn_wires.add(seg)
+
+            # Place a net label at the first pin endpoint
+            lbl_pos = net_pin_positions[0]
+            lines.append(_place_net_alias(lbl_pos[0], lbl_pos[1], net.name))
+            lines.append(_end_command())
+
+    lines.append(TCL_FOOTER)
+    script = "\n".join(lines)
+
+    if output_path:
+        Path(output_path).write_text(script, encoding="utf-8")
+
+    return script
+
+
 def load_ir(path: str) -> DesignIR:
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
