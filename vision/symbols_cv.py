@@ -143,7 +143,10 @@ def _detect_capacitors(binary) -> List[SymbolItem]:
     h_lines = []  # (y, x0, x1)
     v_lines = []  # (x, y0, y1)
     for line in lines:
-        x0, y0, x1, y1 = line[0]
+        pts = line[0] if len(line.shape) > 1 and line.shape[0] == 1 else line
+        if len(pts) != 4:
+            pts = pts.flatten()
+        x0, y0, x1, y1 = int(pts[0]), int(pts[1]), int(pts[2]), int(pts[3])
         if abs(y1 - y0) < abs(x1 - x0) * 0.2:  # horizontal
             h_lines.append((int((y0 + y1) / 2), min(x0, x1), max(x0, x1)))
         elif abs(x1 - x0) < abs(y1 - y0) * 0.2:  # vertical
