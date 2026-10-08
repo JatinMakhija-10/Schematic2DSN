@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "voltage_divider",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "position": {
+        "x": 4000.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3900.0,
+            "y": 3000.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4100.0,
+            "y": 3000.0
+          },
+          "net": "MID"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "position": {
+        "x": 4600.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4500.0,
+            "y": 3000.0
+          },
+          "net": "MID"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4700.0,
+            "y": 3000.0
+          },
+          "net": "GND"
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 3800.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 3800.0,
+            "y": 3100.0
+          },
+          "net": "VCC"
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4800.0,
+        "y": 2800.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4800.0,
+            "y": 2900.0
+          },
+          "net": "GND"
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "R1",
+          "1"
+        ],
+        [
+          "VCC1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VCC",
+          "pos": {
+            "x": 3800.0,
+            "y": 3200.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "MID",
+      "auto_named": true,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "R2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "GND1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "GND",
+          "pos": {
+            "x": 4800.0,
+            "y": 2800.0
+          }
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}

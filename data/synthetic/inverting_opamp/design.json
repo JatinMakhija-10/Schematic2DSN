@@ -1,0 +1,330 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "inverting_opamp",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "position": {
+        "x": 3800.0,
+        "y": 3100.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3700.0,
+            "y": 3100.0
+          },
+          "net": "VIN"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3900.0,
+            "y": 3100.0
+          },
+          "net": "IN_MINUS"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "100k",
+      "unit": 1,
+      "position": {
+        "x": 4600.0,
+        "y": 2800.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4500.0,
+            "y": 2800.0
+          },
+          "net": "IN_MINUS"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4700.0,
+            "y": 2800.0
+          },
+          "net": "VOUT"
+        }
+      ]
+    },
+    {
+      "id": "U1",
+      "symbol_class": "OPAMP",
+      "value": "LM741",
+      "unit": 1,
+      "position": {
+        "x": 4300.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "IN_MINUS",
+          "pos": {
+            "x": 4100.0,
+            "y": 3100.0
+          },
+          "net": "IN_MINUS"
+        },
+        {
+          "number": "2",
+          "function": "IN_PLUS",
+          "pos": {
+            "x": 4100.0,
+            "y": 2900.0
+          },
+          "net": "GND"
+        },
+        {
+          "number": "3",
+          "function": "VS_PLUS",
+          "pos": {
+            "x": 4300.0,
+            "y": 3200.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "4",
+          "function": "VS_MINUS",
+          "pos": {
+            "x": 4300.0,
+            "y": 2800.0
+          },
+          "net": "VEE"
+        },
+        {
+          "number": "5",
+          "function": "OUT",
+          "pos": {
+            "x": 4500.0,
+            "y": 3000.0
+          },
+          "net": "VOUT"
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4200.0,
+        "y": 3400.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 3300.0
+          },
+          "net": "VCC"
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4100.0,
+        "y": 2700.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4100.0,
+            "y": 2800.0
+          },
+          "net": "GND"
+        }
+      ]
+    },
+    {
+      "id": "GND2",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4300.0,
+        "y": 2600.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4300.0,
+            "y": 2700.0
+          },
+          "net": "VEE"
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VIN",
+      "auto_named": false,
+      "pins": [
+        [
+          "R1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VIN",
+          "pos": {
+            "x": 3700.0,
+            "y": 3100.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "IN_MINUS",
+      "auto_named": true,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "U1",
+          "1"
+        ],
+        [
+          "R2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "2"
+        ],
+        [
+          "GND1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "3"
+        ],
+        [
+          "VCC1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VEE",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "4"
+        ],
+        [
+          "GND2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VOUT",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "5"
+        ],
+        [
+          "R2",
+          "2"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VOUT",
+          "pos": {
+            "x": 4700.0,
+            "y": 3000.0
+          }
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}
