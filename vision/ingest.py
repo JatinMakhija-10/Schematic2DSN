@@ -134,8 +134,12 @@ def _ingest_raster(path: Path, out: Path, cfg) -> PageMeta:
     try:
         import cv2
         import numpy as np
-    except ImportError:
-        raise ImportError("OpenCV not installed. Run: pip install opencv-python")
+    except ImportError as e:
+        raise ImportError(
+            f"OpenCV could not be loaded ({e}). "
+            "In Linux / Streamlit Cloud environments, ensure 'libgl1' and 'libglib2.0-0' are installed (via packages.txt), "
+            "or install 'opencv-python-headless'."
+        ) from e
 
     img = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
     if img is None:
