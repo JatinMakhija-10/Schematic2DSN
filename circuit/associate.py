@@ -209,9 +209,14 @@ def _class_to_prefix(symbol_class: str) -> str:
         "RESISTOR": "R", "CAPACITOR": "C", "INDUCTOR": "L",
         "DIODE": "D", "LED": "D", "NPN": "Q", "PNP": "Q",
         "NMOS": "M", "PMOS": "M", "OPAMP": "U", "CONNECTOR": "J",
-        "GROUND": "GND", "VCC": "VCC"
+        "GROUND": "GND", "VCC": "VCC",
+        "IC": "U", "MICROCONTROLLER": "U", "MCU": "U", "TIMER_555": "U",
+        "REGULATOR": "U", "CRYSTAL": "Y", "TRANSFORMER": "T",
+        "RELAY": "K", "SWITCH": "SW", "GATE_AND": "U",
+        "GATE_OR": "U", "GATE_NAND": "U", "GATE_NOR": "U",
+        "GATE_XOR": "U", "GATE_NOT": "U"
     }
-    return prefixes.get(symbol_class, "X")
+    return prefixes.get(symbol_class, "U")
 
 
 # ---------------------------------------------------------------------------

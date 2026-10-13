@@ -6,7 +6,7 @@ Never change a field without bumping the schema version constant and updating te
 """
 from __future__ import annotations
 
-from typing import List, Optional, Literal
+from typing import List, Optional, Literal, Union
 from pydantic import BaseModel, Field
 
 
@@ -94,9 +94,15 @@ class TextsFile(BaseModel):
 
 SCHEMA_SYMBOLS = "1.0"
 
-SymbolClass = Literal[
-    "RESISTOR", "CAPACITOR", "INDUCTOR", "DIODE", "LED",
-    "GROUND", "VCC", "OPAMP", "NPN", "PNP", "NMOS", "PMOS", "CONNECTOR"
+SymbolClass = Union[
+    Literal[
+        "RESISTOR", "CAPACITOR", "INDUCTOR", "DIODE", "LED",
+        "GROUND", "VCC", "OPAMP", "NPN", "PNP", "NMOS", "PMOS", "CONNECTOR",
+        "IC", "MICROCONTROLLER", "MCU", "TIMER_555", "REGULATOR",
+        "TRANSFORMER", "RELAY", "CRYSTAL", "SWITCH",
+        "GATE_AND", "GATE_OR", "GATE_NAND", "GATE_NOR", "GATE_XOR", "GATE_NOT"
+    ],
+    str
 ]
 
 
@@ -170,16 +176,21 @@ SCHEMA_DESIGN = "1.0"
 
 class PinIR(BaseModel):
     number: str              # physical pin number (connectivity key)
-    function: str            # display name (anode, cathode, base…)
+    function: str            # display name (e.g. RESET, TRIG, OUT, VCC, GND)
     pos: Point               # position in mils (Capture coords)
     net: Optional[str] = None
+    electrical_type: Optional[str] = None  # INPUT | OUTPUT | BIDIRECTIONAL | POWER | PASSIVE
+    side: Optional[Literal["LEFT", "RIGHT", "TOP", "BOTTOM"]] = None
 
 
 class ComponentIR(BaseModel):
-    id: str                  # refdes e.g. "R1"
+    id: str                  # refdes e.g. "U1", "IC1"
     symbol_class: SymbolClass
     value: str = ""
-    unit: int = 1            # for multi-unit packages
+    unit: int = 1            # for multi-unit packages (1=Unit A, 2=Unit B...)
+    sub_unit: Optional[str] = None  # e.g. "A", "B", "C", "D"
+    package: Optional[str] = None   # e.g. "DIP-8", "SOIC-14", "LQFP-32", "TO-220"
+    description: Optional[str] = None
     position: Point          # mils, Capture coords
     rotation: int = 0        # 0 | 90 | 180 | 270
     mirror: bool = False

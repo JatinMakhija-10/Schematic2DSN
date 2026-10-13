@@ -1,0 +1,677 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "h_bridge",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "M1",
+      "symbol_class": "NMOS",
+      "value": "2N7000",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3800.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GATE",
+          "pos": {
+            "x": 3650.0,
+            "y": 3200.0
+          },
+          "net": "CTRL_LO_L",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "DRAIN",
+          "pos": {
+            "x": 3900.0,
+            "y": 3350.0
+          },
+          "net": "MOTOR_A",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "3",
+          "function": "SOURCE",
+          "pos": {
+            "x": 3900.0,
+            "y": 3050.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "M2",
+      "symbol_class": "PMOS",
+      "value": "IRF9540",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3800.0,
+        "y": 2700.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GATE",
+          "pos": {
+            "x": 3650.0,
+            "y": 2700.0
+          },
+          "net": "CTRL_HI_L",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "DRAIN",
+          "pos": {
+            "x": 3900.0,
+            "y": 2850.0
+          },
+          "net": "MOTOR_A",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "3",
+          "function": "SOURCE",
+          "pos": {
+            "x": 3900.0,
+            "y": 2550.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "M3",
+      "symbol_class": "NMOS",
+      "value": "2N7000",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4600.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GATE",
+          "pos": {
+            "x": 4450.0,
+            "y": 3200.0
+          },
+          "net": "CTRL_LO_R",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "DRAIN",
+          "pos": {
+            "x": 4700.0,
+            "y": 3350.0
+          },
+          "net": "MOTOR_B",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "3",
+          "function": "SOURCE",
+          "pos": {
+            "x": 4700.0,
+            "y": 3050.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "M4",
+      "symbol_class": "PMOS",
+      "value": "IRF9540",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4600.0,
+        "y": 2700.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GATE",
+          "pos": {
+            "x": 4450.0,
+            "y": 2700.0
+          },
+          "net": "CTRL_HI_R",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "DRAIN",
+          "pos": {
+            "x": 4700.0,
+            "y": 2850.0
+          },
+          "net": "MOTOR_B",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "3",
+          "function": "SOURCE",
+          "pos": {
+            "x": 4700.0,
+            "y": 2550.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3600.0,
+        "y": 2700.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3500.0,
+            "y": 2700.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3700.0,
+            "y": 2700.0
+          },
+          "net": "CTRL_HI_L",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3600.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3500.0,
+            "y": 3200.0
+          },
+          "net": "CTRL_LO_L",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3700.0,
+            "y": 3200.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4800.0,
+        "y": 2700.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4700.0,
+            "y": 2700.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4900.0,
+            "y": 2700.0
+          },
+          "net": "CTRL_HI_R",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4800.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4700.0,
+            "y": 3200.0
+          },
+          "net": "CTRL_LO_R",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4900.0,
+            "y": 3200.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "symbol_class": "CONNECTOR",
+      "value": "HEADER_1X2",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 2950.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "P1",
+          "pos": {
+            "x": 4300.0,
+            "y": 3000.0
+          },
+          "net": "MOTOR_A",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "P2",
+          "pos": {
+            "x": 4300.0,
+            "y": 2900.0
+          },
+          "net": "MOTOR_B",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 2400.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 2300.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 3500.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 3600.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "M2",
+          "3"
+        ],
+        [
+          "M4",
+          "3"
+        ],
+        [
+          "R1",
+          "1"
+        ],
+        [
+          "R3",
+          "1"
+        ],
+        [
+          "VCC1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "M1",
+          "3"
+        ],
+        [
+          "M3",
+          "3"
+        ],
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "R4",
+          "2"
+        ],
+        [
+          "GND1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "MOTOR_A",
+      "auto_named": true,
+      "pins": [
+        [
+          "M1",
+          "2"
+        ],
+        [
+          "M2",
+          "2"
+        ],
+        [
+          "J1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "MOTOR_B",
+      "auto_named": true,
+      "pins": [
+        [
+          "M3",
+          "2"
+        ],
+        [
+          "M4",
+          "2"
+        ],
+        [
+          "J1",
+          "2"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "CTRL_HI_L",
+      "auto_named": false,
+      "pins": [
+        [
+          "M2",
+          "1"
+        ],
+        [
+          "R1",
+          "2"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "CTRL_HI_L",
+          "pos": {
+            "x": 3600.0,
+            "y": 2700.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "CTRL_LO_L",
+      "auto_named": false,
+      "pins": [
+        [
+          "M1",
+          "1"
+        ],
+        [
+          "R2",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "CTRL_LO_L",
+          "pos": {
+            "x": 3600.0,
+            "y": 3200.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "CTRL_HI_R",
+      "auto_named": false,
+      "pins": [
+        [
+          "M4",
+          "1"
+        ],
+        [
+          "R3",
+          "2"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "CTRL_HI_R",
+          "pos": {
+            "x": 4800.0,
+            "y": 2700.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "CTRL_LO_R",
+      "auto_named": false,
+      "pins": [
+        [
+          "M3",
+          "1"
+        ],
+        [
+          "R4",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "CTRL_LO_R",
+          "pos": {
+            "x": 4800.0,
+            "y": 3200.0
+          }
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}

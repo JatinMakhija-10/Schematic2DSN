@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import List, Optional
@@ -80,21 +81,34 @@ def _postprocess(items: List[TextItem]) -> List[TextItem]:
         # Use fixed refdes if it differs and is valid
         if REFDES_PATTERN.match(fixed) and fixed != text:
             text = fixed
+        elif norm != text:
+            text = norm
         result.append(item.model_copy(update={"text": text}))
     return result
 
 
 def run_ocr(img_path: str) -> TextsFile:
     """
-    Run PaddleOCR on an image and return extracted text items.
+    Run OCR on an image and return extracted text items.
     Runs at 0 deg and 90 deg, merges by confidence.
-    Falls back gracefully if PaddleOCR is not installed.
+    Supports PaddleOCR and RapidOCR (ONNX runtime), with graceful fallback.
     """
+    engine_name = None
+    paddle_ocr = None
+    rapid_ocr = None
+
     try:
         from paddleocr import PaddleOCR
-    except ImportError:
-        print("[ocr] WARNING: PaddleOCR not installed. Returning empty texts.")
-        return TextsFile(items=[])
+        paddle_ocr = PaddleOCR(use_angle_cls=True, lang="en", show_log=False)
+        engine_name = "paddle"
+    except Exception:
+        try:
+            from rapidocr_onnxruntime import RapidOCR
+            rapid_ocr = RapidOCR()
+            engine_name = "rapid"
+        except Exception:
+            print("[ocr] WARNING: Neither PaddleOCR nor RapidOCR available. Returning empty texts.")
+            return TextsFile(items=[])
 
     try:
         import cv2
@@ -107,18 +121,34 @@ def run_ocr(img_path: str) -> TextsFile:
     if img is None:
         raise FileNotFoundError(f"Cannot read image: {img_path}")
 
+    h, w = img.shape[:2]
+
     # OCR at 0 degrees
-    ocr = PaddleOCR(use_angle_cls=True, lang="en", show_log=False)
-    results_0 = ocr.ocr(img_path, cls=True)
+    if engine_name == "paddle":
+        results_0 = paddle_ocr.ocr(img_path, cls=True)
+    else:
+        rapid_res, _ = rapid_ocr(img)
+        # Format rapidocr output to match paddleocr structure: [[box, (text, conf)]]
+        results_0 = [[(item[0], (item[1], float(item[2]))) for item in rapid_res]] if rapid_res else [[]]
 
     # OCR at 90 degrees (for vertical text on rotated components)
     img_90 = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
-    h, w = img.shape[:2]
-    import tempfile, os
-    tmp_90 = tempfile.mktemp(suffix=".png")
-    cv2.imwrite(tmp_90, img_90)
-    results_90_raw = ocr.ocr(tmp_90, cls=True)
-    os.unlink(tmp_90)
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tf:
+        tmp_90 = tf.name
+    try:
+        cv2.imwrite(tmp_90, img_90)
+        if engine_name == "paddle":
+            results_90_raw = paddle_ocr.ocr(tmp_90, cls=True)
+        else:
+            rapid_res_90, _ = rapid_ocr(tmp_90)
+            results_90_raw = [[(item[0], (item[1], float(item[2]))) for item in rapid_res_90]] if rapid_res_90 else [[]]
+    finally:
+        if os.path.exists(tmp_90):
+            try:
+                os.unlink(tmp_90)
+            except OSError:
+                pass
 
     def parse_results(results, rotation_deg: float = 0.0,
                       img_w: int = 0, img_h: int = 0) -> List[TextItem]:
@@ -168,7 +198,7 @@ def draw_ocr_overlay(img_path: str, texts: TextsFile, out_path: str) -> None:
     for item in texts.items:
         x0, y0 = int(item.bbox.x0), int(item.bbox.y0)
         x1, y1 = int(item.bbox.x1), int(item.bbox.y1)
-        color = (0, 180, 0) if item.conf > 0.8 else (0, 100, 200)
+        color = (233, 165, 14) if item.conf > 0.8 else (11, 158, 245)
         cv2.rectangle(img, (x0, y0), (x1, y1), color, 1)
         label = f"{item.text[:15]} ({item.conf:.2f})"
         cv2.putText(img, label, (x0, max(y0 - 2, 10)),

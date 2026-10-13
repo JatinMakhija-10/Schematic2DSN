@@ -12,6 +12,9 @@
       "symbol_class": "RESISTOR",
       "value": "330R",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4000.0,
         "y": 3000.0
@@ -28,7 +31,9 @@
             "x": 3900.0,
             "y": 3000.0
           },
-          "net": "VCC"
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "2",
@@ -37,7 +42,9 @@
             "x": 4100.0,
             "y": 3000.0
           },
-          "net": "NET_001"
+          "net": "NET_001",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -46,6 +53,9 @@
       "symbol_class": "LED",
       "value": "RED",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4600.0,
         "y": 3000.0
@@ -62,7 +72,9 @@
             "x": 4500.0,
             "y": 3000.0
           },
-          "net": "NET_001"
+          "net": "NET_001",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "2",
@@ -71,7 +83,9 @@
             "x": 4700.0,
             "y": 3000.0
           },
-          "net": "GND"
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -80,6 +94,9 @@
       "symbol_class": "VCC",
       "value": "",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 3800.0,
         "y": 3200.0
@@ -96,7 +113,9 @@
             "x": 3800.0,
             "y": 3100.0
           },
-          "net": "VCC"
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -105,6 +124,9 @@
       "symbol_class": "GROUND",
       "value": "",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4800.0,
         "y": 2800.0
@@ -121,7 +143,9 @@
             "x": 4800.0,
             "y": 2900.0
           },
-          "net": "GND"
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
         }
       ]
     }

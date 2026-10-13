@@ -1,0 +1,902 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "mcu_minimum_system",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "U1",
+      "symbol_class": "MICROCONTROLLER",
+      "value": "ATMEGA328P",
+      "unit": 1,
+      "sub_unit": null,
+      "package": "DIP-28",
+      "description": "8-bit AVR Microcontroller",
+      "position": {
+        "x": 4200.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "RESET",
+          "pos": {
+            "x": 4020.0,
+            "y": 3140.0
+          },
+          "net": "RESET_NET",
+          "electrical_type": "INPUT",
+          "side": "LEFT"
+        },
+        {
+          "number": "2",
+          "function": "PD0_RXD",
+          "pos": {
+            "x": 4020.0,
+            "y": 3100.0
+          },
+          "net": "MCU_RX",
+          "electrical_type": "BIDIRECTIONAL",
+          "side": "LEFT"
+        },
+        {
+          "number": "3",
+          "function": "PD1_TXD",
+          "pos": {
+            "x": 4020.0,
+            "y": 3060.0
+          },
+          "net": "MCU_TX",
+          "electrical_type": "BIDIRECTIONAL",
+          "side": "LEFT"
+        },
+        {
+          "number": "7",
+          "function": "VCC",
+          "pos": {
+            "x": 4020.0,
+            "y": 3020.0
+          },
+          "net": "VCC",
+          "electrical_type": "POWER",
+          "side": "LEFT"
+        },
+        {
+          "number": "8",
+          "function": "GND",
+          "pos": {
+            "x": 4020.0,
+            "y": 2980.0
+          },
+          "net": "GND",
+          "electrical_type": "POWER",
+          "side": "LEFT"
+        },
+        {
+          "number": "9",
+          "function": "XTAL1",
+          "pos": {
+            "x": 4020.0,
+            "y": 2940.0
+          },
+          "net": "XTAL1_NET",
+          "electrical_type": "INPUT",
+          "side": "LEFT"
+        },
+        {
+          "number": "10",
+          "function": "XTAL2",
+          "pos": {
+            "x": 4020.0,
+            "y": 2900.0
+          },
+          "net": "XTAL2_NET",
+          "electrical_type": "OUTPUT",
+          "side": "LEFT"
+        },
+        {
+          "number": "19",
+          "function": "PB5_SCK",
+          "pos": {
+            "x": 4380.0,
+            "y": 3100.0
+          },
+          "net": "LED_DRIVE",
+          "electrical_type": "BIDIRECTIONAL",
+          "side": "RIGHT"
+        },
+        {
+          "number": "20",
+          "function": "AVCC",
+          "pos": {
+            "x": 4380.0,
+            "y": 3060.0
+          },
+          "net": "VCC",
+          "electrical_type": "POWER",
+          "side": "RIGHT"
+        },
+        {
+          "number": "21",
+          "function": "AREF",
+          "pos": {
+            "x": 4380.0,
+            "y": 3020.0
+          },
+          "net": "AREF_NET",
+          "electrical_type": "INPUT",
+          "side": "RIGHT"
+        },
+        {
+          "number": "22",
+          "function": "AGND",
+          "pos": {
+            "x": 4380.0,
+            "y": 2980.0
+          },
+          "net": "GND",
+          "electrical_type": "POWER",
+          "side": "RIGHT"
+        }
+      ]
+    },
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3800.0,
+        "y": 3400.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3800.0,
+            "y": 3500.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3800.0,
+            "y": 3300.0
+          },
+          "net": "RESET_NET",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "SW1",
+      "symbol_class": "SWITCH",
+      "value": "RESET_BTN",
+      "unit": 1,
+      "sub_unit": null,
+      "package": "SPST-TACT",
+      "description": null,
+      "position": {
+        "x": 3800.0,
+        "y": 3140.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "COM",
+          "pos": {
+            "x": 3700.0,
+            "y": 3140.0
+          },
+          "net": "RESET_NET",
+          "electrical_type": "PASSIVE",
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "NO",
+          "pos": {
+            "x": 3900.0,
+            "y": 3140.0
+          },
+          "net": "GND",
+          "electrical_type": "PASSIVE",
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "Y1",
+      "symbol_class": "CRYSTAL",
+      "value": "16MHz",
+      "unit": 1,
+      "sub_unit": null,
+      "package": "HC-49S",
+      "description": null,
+      "position": {
+        "x": 3750.0,
+        "y": 2750.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "XTAL1",
+          "pos": {
+            "x": 3650.0,
+            "y": 2750.0
+          },
+          "net": "XTAL1_NET",
+          "electrical_type": "PASSIVE",
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "XTAL2",
+          "pos": {
+            "x": 3850.0,
+            "y": 2750.0
+          },
+          "net": "XTAL2_NET",
+          "electrical_type": "PASSIVE",
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "symbol_class": "CAPACITOR",
+      "value": "22pF",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3650.0,
+        "y": 2500.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 3650.0,
+            "y": 2600.0
+          },
+          "net": "XTAL1_NET",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 3650.0,
+            "y": 2400.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "symbol_class": "CAPACITOR",
+      "value": "22pF",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3850.0,
+        "y": 2500.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 3850.0,
+            "y": 2600.0
+          },
+          "net": "XTAL2_NET",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 3850.0,
+            "y": 2400.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "symbol_class": "CAPACITOR",
+      "value": "100nF",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4020.0,
+        "y": 2700.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 4020.0,
+            "y": 2800.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 4020.0,
+            "y": 2600.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "symbol_class": "CAPACITOR",
+      "value": "100nF",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4600.0,
+        "y": 2700.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 4600.0,
+            "y": 2800.0
+          },
+          "net": "AREF_NET",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 4600.0,
+            "y": 2600.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "1k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4700.0,
+        "y": 3100.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4600.0,
+            "y": 3100.0
+          },
+          "net": "LED_DRIVE",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4800.0,
+            "y": 3100.0
+          },
+          "net": "LED_NET",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "symbol_class": "DIODE",
+      "value": "LED_STAT",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 5000.0,
+        "y": 3100.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "ANODE",
+          "pos": {
+            "x": 4900.0,
+            "y": 3100.0
+          },
+          "net": "LED_NET",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "CATHODE",
+          "pos": {
+            "x": 5100.0,
+            "y": 3100.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "symbol_class": "CONNECTOR",
+      "value": "UART_HDR_1X4",
+      "unit": 1,
+      "sub_unit": null,
+      "package": "HDR-1X4",
+      "description": null,
+      "position": {
+        "x": 3400.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "VCC",
+          "pos": {
+            "x": 3480.0,
+            "y": 3090.0
+          },
+          "net": "VCC",
+          "electrical_type": "POWER",
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "TX",
+          "pos": {
+            "x": 3480.0,
+            "y": 3030.0
+          },
+          "net": "MCU_RX",
+          "electrical_type": "OUTPUT",
+          "side": null
+        },
+        {
+          "number": "3",
+          "function": "RX",
+          "pos": {
+            "x": 3480.0,
+            "y": 2970.0
+          },
+          "net": "MCU_TX",
+          "electrical_type": "INPUT",
+          "side": null
+        },
+        {
+          "number": "4",
+          "function": "GND",
+          "pos": {
+            "x": 3480.0,
+            "y": 2910.0
+          },
+          "net": "GND",
+          "electrical_type": "POWER",
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3800.0,
+        "y": 3600.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 3800.0,
+            "y": 3500.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 2200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 2300.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "VCC1",
+          "1"
+        ],
+        [
+          "U1",
+          "7"
+        ],
+        [
+          "U1",
+          "20"
+        ],
+        [
+          "R1",
+          "1"
+        ],
+        [
+          "C3",
+          "1"
+        ],
+        [
+          "J1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VCC_5V",
+          "pos": {
+            "x": 3800.0,
+            "y": 3600.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "GND1",
+          "1"
+        ],
+        [
+          "U1",
+          "8"
+        ],
+        [
+          "U1",
+          "22"
+        ],
+        [
+          "SW1",
+          "2"
+        ],
+        [
+          "C1",
+          "2"
+        ],
+        [
+          "C2",
+          "2"
+        ],
+        [
+          "C3",
+          "2"
+        ],
+        [
+          "C4",
+          "2"
+        ],
+        [
+          "D1",
+          "2"
+        ],
+        [
+          "J1",
+          "4"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "GND",
+          "pos": {
+            "x": 4200.0,
+            "y": 2200.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "RESET_NET",
+      "auto_named": false,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "SW1",
+          "1"
+        ],
+        [
+          "U1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "RESET",
+          "pos": {
+            "x": 3750.0,
+            "y": 3250.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "XTAL1_NET",
+      "auto_named": true,
+      "pins": [
+        [
+          "U1",
+          "9"
+        ],
+        [
+          "Y1",
+          "1"
+        ],
+        [
+          "C1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "XTAL2_NET",
+      "auto_named": true,
+      "pins": [
+        [
+          "U1",
+          "10"
+        ],
+        [
+          "Y1",
+          "2"
+        ],
+        [
+          "C2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "AREF_NET",
+      "auto_named": true,
+      "pins": [
+        [
+          "U1",
+          "21"
+        ],
+        [
+          "C4",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "MCU_RX",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "2"
+        ],
+        [
+          "J1",
+          "2"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "UART_RX",
+          "pos": {
+            "x": 3500.0,
+            "y": 3100.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "MCU_TX",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "3"
+        ],
+        [
+          "J1",
+          "3"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "UART_TX",
+          "pos": {
+            "x": 3500.0,
+            "y": 2900.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "LED_DRIVE",
+      "auto_named": true,
+      "pins": [
+        [
+          "U1",
+          "19"
+        ],
+        [
+          "R2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "LED_NET",
+      "auto_named": true,
+      "pins": [
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "D1",
+          "1"
+        ]
+      ],
+      "labels": []
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}

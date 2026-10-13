@@ -323,19 +323,19 @@ def _bbox_iou(a: BBox, b: BBox) -> float:
 # ---------------------------------------------------------------------------
 
 _CLASS_COLORS = {
-    "RESISTOR":  (0, 255, 0),
-    "CAPACITOR": (255, 165, 0),
-    "INDUCTOR":  (0, 200, 200),
-    "DIODE":     (200, 0, 200),
-    "LED":       (255, 100, 255),
-    "GROUND":    (0, 0, 255),
-    "VCC":       (255, 0, 0),
-    "OPAMP":     (128, 128, 0),
-    "NPN":       (0, 128, 255),
-    "PNP":       (0, 64, 200),
-    "NMOS":      (64, 200, 0),
-    "PMOS":      (200, 64, 0),
-    "CONNECTOR": (128, 0, 128),
+    "RESISTOR":  (233, 165, 14),   # Electric Cyan
+    "CAPACITOR": (11, 158, 245),   # Technical Amber
+    "INDUCTOR":  (248, 189, 56),   # Sky Ice Blue
+    "DIODE":     (68, 68, 239),    # Alert Crimson
+    "LED":       (36, 191, 251),   # Laser Gold/Amber
+    "GROUND":    (180, 180, 180),  # Steel Silver
+    "VCC":       (68, 68, 239),    # Red/Crimson
+    "OPAMP":     (233, 165, 14),   # Electric Cyan
+    "NPN":       (11, 158, 245),   # Technical Amber
+    "PNP":       (6, 119, 217),    # Deep Amber
+    "NMOS":      (248, 189, 56),   # Sky Ice Cyan
+    "PMOS":      (233, 165, 14),   # Electric Cyan
+    "CONNECTOR": (255, 255, 255),  # Pure White
 }
 
 

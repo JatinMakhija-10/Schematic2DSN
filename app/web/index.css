@@ -1,0 +1,915 @@
+/* ==========================================================================
+   app/web/index.css  --  Professional Technical CAD Workstation Stylesheet.
+   Author: Jatin Makhija (@JatinMakhija-10) - https://github.com/JatinMakhija-10/Schematic2DSN
+
+   Engineering Design Constraints:
+     - ZERO ROUNDED CORNERS (border-radius: 0px on literally everything)
+     - STRICTLY NO PURPLE, NO GREEN
+     - Palette: Deep Obsidian (#06080d), Slate Graphite (#111522), Steel Surface (#171d2e),
+                Electric Cyan (#0ea5e9), Technical Amber (#f59e0b), Pure White (#ffffff),
+                Alert Crimson (#ef4444).
+   ========================================================================== */
+
+/* Universal Reset: Eliminate all border radii and reset box sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 0px !important;
+}
+
+:root {
+    --bg-base: #06080d;
+    --bg-panel: #0c0f17;
+    --bg-surface: #121624;
+    --bg-surface-hover: #1a2033;
+    --bg-input: #090c14;
+    --border-subtle: #1c2336;
+    --border-strong: #2c3752;
+    --border-active: #0ea5e9;
+    --accent-cyan: #0ea5e9;
+    --accent-cyan-hover: #38bdf8;
+    --accent-cyan-subtle: rgba(14, 165, 233, 0.12);
+    --accent-amber: #f59e0b;
+    --accent-amber-subtle: rgba(245, 158, 11, 0.12);
+    --alert-crimson: #ef4444;
+    --alert-crimson-subtle: rgba(239, 68, 68, 0.12);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom Sharp Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-panel);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   Top Technical Header HUD
+   -------------------------------------------------------------------------- */
+.cad-header {
+    background-color: var(--bg-panel);
+    border-bottom: 1px solid var(--border-strong);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.cad-branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cad-logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-cyan);
+    box-shadow: 0 0 8px var(--accent-cyan);
+    display: inline-block;
+    animation: statusPulse 2s infinite ease-in-out;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.cad-logo-tag {
+    background-color: var(--accent-cyan-subtle);
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    letter-spacing: 0.06em;
+}
+
+.header-divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--border-subtle);
+}
+
+.header-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+.header-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tech-chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 4px 8px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chip-dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--accent-cyan);
+}
+
+.author-link {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-surface);
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+}
+
+.author-link strong {
+    color: var(--accent-cyan);
+}
+
+.author-link:hover {
+    border-color: var(--accent-cyan);
+    color: #ffffff;
+}
+
+.btn-github {
+    background-color: #151926;
+    border: 1px solid var(--border-strong);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 6px 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-github:hover {
+    background-color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    color: #000000;
+}
+
+/* --------------------------------------------------------------------------
+   Main Layout Grid
+   -------------------------------------------------------------------------- */
+.cad-workspace {
+    display: grid;
+    grid-template-columns: 310px 1fr 370px;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Panels
+   -------------------------------------------------------------------------- */
+.panel {
+    background-color: var(--bg-panel);
+    border-right: 1px solid var(--border-strong);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.panel-right {
+    border-right: none;
+    border-left: 1px solid var(--border-strong);
+}
+
+.panel-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.panel-badge {
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+    background-color: var(--accent-cyan-subtle);
+    border: 1px solid var(--accent-cyan);
+    padding: 2px 6px;
+}
+
+.panel-content {
+    padding: 14px;
+    flex: 1;
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+.section-label:first-child {
+    margin-top: 0;
+}
+
+/* Form Controls & Inputs */
+.tech-select, .tech-input {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 8px 10px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.tech-select:focus, .tech-input:focus {
+    border-color: var(--accent-cyan);
+}
+
+.btn-group-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.btn-action {
+    width: 100%;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+}
+
+.btn-action:hover {
+    background-color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    color: #000000;
+}
+
+.btn-primary {
+    background-color: #172133;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-cyan);
+    color: #000000;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--border-strong);
+    color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-surface-hover);
+    color: #ffffff;
+}
+
+/* Drag and Drop Zone */
+.dropzone {
+    border: 1px dashed var(--border-strong);
+    background-color: var(--bg-surface);
+    padding: 16px 10px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: border-color 0.15s, background-color 0.15s;
+    outline: none;
+}
+
+.dropzone:hover, .dropzone.dragover {
+    border-color: var(--accent-cyan);
+    background-color: var(--accent-cyan-subtle);
+    color: #ffffff;
+}
+
+.dropzone svg {
+    margin-bottom: 6px;
+    stroke: var(--accent-cyan);
+}
+
+.drop-text {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+}
+
+.drop-sub {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Radio Protocol Selector */
+.radio-box-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.radio-option:hover {
+    border-color: var(--border-strong);
+}
+
+.radio-option input[type="radio"] {
+    margin-top: 2px;
+    accent-color: var(--accent-cyan);
+}
+
+.radio-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+}
+
+.radio-desc {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+/* KPI Telemetry Tiles */
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.telemetry-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent-cyan);
+    padding: 8px 10px;
+}
+
+.telemetry-card .t-label {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+}
+
+.telemetry-card .t-val {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2px;
+}
+
+/* Stage Stepper Matrix */
+.stage-stepper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.stage-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 8px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    transition: all 0.15s;
+}
+
+.stage-item .s-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--border-strong);
+}
+
+.stage-item.completed {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+}
+
+.stage-item.completed .s-dot {
+    background-color: var(--accent-cyan);
+    box-shadow: 0 0 4px var(--accent-cyan);
+}
+
+.stage-item.active {
+    border-color: var(--accent-cyan);
+    background-color: var(--accent-cyan-subtle);
+    color: #ffffff;
+}
+
+.stage-item.active .s-dot {
+    background-color: var(--accent-amber);
+    box-shadow: 0 0 6px var(--accent-amber);
+}
+
+.stage-item .s-id {
+    font-weight: 700;
+    color: var(--accent-cyan);
+    width: 18px;
+}
+
+.stage-item .s-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stage-item .s-status {
+    font-size: 0.62rem;
+    color: var(--accent-cyan);
+    border: 1px solid var(--border-strong);
+    padding: 1px 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Center CAD Viewport
+   -------------------------------------------------------------------------- */
+.cad-viewport {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.viewport-toolbar {
+    background-color: var(--bg-panel);
+    border-bottom: 1px solid var(--border-subtle);
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.toolbar-label {
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-right: 4px;
+}
+
+.tool-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: 3px 8px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+}
+
+.tool-btn:hover {
+    border-color: var(--border-strong);
+    color: #ffffff;
+}
+
+.tool-btn.active {
+    background-color: var(--accent-cyan-subtle);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.canvas-container {
+    flex: 1;
+    position: relative;
+    background-color: #05070a;
+    overflow: hidden;
+}
+
+#schematicCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+}
+
+#schematicCanvas:active {
+    cursor: grabbing;
+}
+
+.hud-overlay {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: rgba(9, 12, 19, 0.92);
+    border: 1px solid var(--border-strong);
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    z-index: 10;
+}
+
+.floating-tooltip {
+    position: absolute;
+    background-color: rgba(12, 15, 23, 0.96);
+    border: 1px solid var(--accent-cyan);
+    padding: 8px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #ffffff;
+    pointer-events: none;
+    z-index: 20;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.tooltip-header {
+    font-weight: 700;
+    color: var(--accent-cyan);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.tooltip-body {
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Right Inspector Panel
+   -------------------------------------------------------------------------- */
+.tabs-header {
+    display: flex;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-strong);
+    flex-shrink: 0;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 10px 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.tab-btn:hover {
+    color: #ffffff;
+}
+
+.tab-btn.active {
+    background-color: var(--bg-panel);
+    color: #ffffff;
+    border-bottom: 2px solid var(--accent-cyan);
+}
+
+.tab-pane {
+    display: none;
+    padding: 14px;
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.panel-section-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.table-container {
+    max-height: 240px;
+    overflow-y: auto;
+    border: 1px solid var(--border-subtle);
+}
+
+/* Data Tables */
+.cad-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+}
+
+.cad-table th {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-strong);
+    padding: 6px 8px;
+    text-align: left;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.cad-table td {
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 6px 8px;
+    color: var(--text-primary);
+}
+
+.cad-table tr {
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+.cad-table tr:hover td {
+    background-color: var(--bg-surface-hover);
+    color: var(--accent-cyan);
+}
+
+.cad-table tr.selected td {
+    background-color: var(--accent-cyan-subtle);
+    color: #ffffff;
+}
+
+/* Property Sheet */
+.property-sheet {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+}
+
+.prop-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.prop-row:last-child {
+    border-bottom: none;
+}
+
+.prop-label {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.prop-value {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.empty-hint {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 8px 0;
+}
+
+/* Integrity / ERC Cards */
+.integrity-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.i-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.text-cyan {
+    color: var(--accent-cyan);
+}
+
+.erc-item {
+    background-color: #160d0d;
+    border: 1px solid #571616;
+    border-left: 3px solid var(--alert-crimson);
+    padding: 8px 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    margin-bottom: 8px;
+}
+
+.erc-item .code {
+    color: var(--alert-crimson);
+    font-weight: 700;
+}
+
+.erc-clean {
+    background-color: #0b1420;
+    border: 1px solid #1c2a3d;
+    border-left: 3px solid var(--accent-cyan);
+    padding: 10px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: #ffffff;
+}
+
+/* Code Area */
+.tcl-controls-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.code-box {
+    width: 100%;
+    height: 380px;
+    background-color: #05070a;
+    border: 1px solid var(--border-strong);
+    color: #e2e8f0;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    line-height: 1.45;
+}
+
+.code-box:focus {
+    border-color: var(--accent-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Status Strip
+   -------------------------------------------------------------------------- */
+.cad-statusbar {
+    background-color: var(--bg-panel);
+    border-top: 1px solid var(--border-strong);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.status-left, .status-center, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-cyan);
+}
+
+.status-sep {
+    color: var(--border-strong);
+    margin: 0 2px;
+}
+
+.cad-statusbar a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+}
+
+.cad-statusbar a:hover {
+    text-decoration: underline;
+}
+
+.cad-statusbar strong {
+    color: #ffffff;
+}

@@ -12,6 +12,9 @@
       "symbol_class": "RESISTOR",
       "value": "10k",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 3800.0,
         "y": 3100.0
@@ -28,7 +31,9 @@
             "x": 3700.0,
             "y": 3100.0
           },
-          "net": "VIN"
+          "net": "VIN",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "2",
@@ -37,7 +42,9 @@
             "x": 3900.0,
             "y": 3100.0
           },
-          "net": "IN_MINUS"
+          "net": "IN_MINUS",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -46,6 +53,9 @@
       "symbol_class": "RESISTOR",
       "value": "100k",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4600.0,
         "y": 2800.0
@@ -62,7 +72,9 @@
             "x": 4500.0,
             "y": 2800.0
           },
-          "net": "IN_MINUS"
+          "net": "IN_MINUS",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "2",
@@ -71,7 +83,9 @@
             "x": 4700.0,
             "y": 2800.0
           },
-          "net": "VOUT"
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -80,6 +94,9 @@
       "symbol_class": "OPAMP",
       "value": "LM741",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4300.0,
         "y": 3000.0
@@ -96,7 +113,9 @@
             "x": 4100.0,
             "y": 3100.0
           },
-          "net": "IN_MINUS"
+          "net": "IN_MINUS",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "2",
@@ -105,7 +124,9 @@
             "x": 4100.0,
             "y": 2900.0
           },
-          "net": "GND"
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "3",
@@ -114,7 +135,9 @@
             "x": 4300.0,
             "y": 3200.0
           },
-          "net": "VCC"
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "4",
@@ -123,7 +146,9 @@
             "x": 4300.0,
             "y": 2800.0
           },
-          "net": "VEE"
+          "net": "VEE",
+          "electrical_type": null,
+          "side": null
         },
         {
           "number": "5",
@@ -132,7 +157,9 @@
             "x": 4500.0,
             "y": 3000.0
           },
-          "net": "VOUT"
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -141,6 +168,9 @@
       "symbol_class": "VCC",
       "value": "",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4200.0,
         "y": 3400.0
@@ -157,7 +187,9 @@
             "x": 4200.0,
             "y": 3300.0
           },
-          "net": "VCC"
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -166,6 +198,9 @@
       "symbol_class": "GROUND",
       "value": "",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4100.0,
         "y": 2700.0
@@ -182,7 +217,9 @@
             "x": 4100.0,
             "y": 2800.0
           },
-          "net": "GND"
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
         }
       ]
     },
@@ -191,6 +228,9 @@
       "symbol_class": "GROUND",
       "value": "",
       "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
       "position": {
         "x": 4300.0,
         "y": 2600.0
@@ -207,7 +247,9 @@
             "x": 4300.0,
             "y": 2700.0
           },
-          "net": "VEE"
+          "net": "VEE",
+          "electrical_type": null,
+          "side": null
         }
       ]
     }

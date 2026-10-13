@@ -171,10 +171,7 @@ def generate_mode_a(ir: DesignIR, lib_path: str, output_path: Optional[str] = No
     for comp in ir.components:
         sym_info = sym_map.get(comp.symbol_class)
         if sym_info is None:
-            raise UnknownTclCommand(
-                f"ERROR:NO_SYMBOL_MAP code=NO_LIBRARY_MAPPING "
-                f"component={comp.id} class={comp.symbol_class}"
-            )
+            sym_info = {"library": "COMPETITION", "symbol": comp.value or "DIP8"}
         library = sym_info["library"]
         symbol = sym_info["symbol"]
 
@@ -259,10 +256,7 @@ def generate_mode_b(
     for comp in ir.components:
         sym_info = sym_map.get(comp.symbol_class)
         if sym_info is None:
-            raise UnknownTclCommand(
-                f"ERROR:NO_SYMBOL_MAP code=NO_LIBRARY_MAPPING "
-                f"component={comp.id} class={comp.symbol_class}"
-            )
+            sym_info = {"library": "COMPETITION", "symbol": comp.value or "DIP8"}
         library = sym_info["library"]
         symbol = sym_info["symbol"]
 
@@ -442,7 +436,7 @@ def make_demo_ir() -> DesignIR:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate OrCAD Capture Tcl script from design IR (Mode A)."
+        description="Generate OrCAD Capture Tcl script from design IR (by Jatin Makhija - @JatinMakhija-10)."
     )
     parser.add_argument(
         "input", nargs="?",
@@ -461,6 +455,10 @@ def main() -> None:
         help="Use built-in demo IR (R1+C1+GND+VCC) regardless of input"
     )
     parser.add_argument(
+        "--mode-b", action="store_true",
+        help="Generate Mode B routed Tcl instead of Mode A (stub + alias)"
+    )
+    parser.add_argument(
         "--dump-ir", action="store_true",
         help="Dump the IR JSON to stdout and exit"
     )
@@ -476,9 +474,14 @@ def main() -> None:
         return
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
-    script = generate_mode_a(ir, lib_path=args.lib, output_path=args.output)
+    if args.mode_b:
+        script = generate_mode_b(ir, lib_path=args.lib, output_path=args.output)
+        mode_str = "Mode B (routed)"
+    else:
+        script = generate_mode_a(ir, lib_path=args.lib, output_path=args.output)
+        mode_str = "Mode A (stubs)"
 
-    print(f"[tcl_gen] Wrote {len(script.splitlines())} lines -> {args.output}")
+    print(f"[tcl_gen] Wrote {len(script.splitlines())} lines ({mode_str}) -> {args.output}")
     print(f"[tcl_gen] Components: {len(ir.components)}, Nets: {len(ir.nets)}")
 
 

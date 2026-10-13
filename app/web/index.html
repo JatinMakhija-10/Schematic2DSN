@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schematic2DSN - Deterministic Reverse Engineering and Cadence OrCAD Capture DSN Compiler Workstation. Developed by Jatin Makhija (@JatinMakhija-10).">
+    <meta name="author" content="Jatin Makhija (@JatinMakhija-10)">
+    <title>Schematic2DSN // CAD Workstation &amp; EDA Reverse Engineering Suite</title>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- =========================================================================
+         TOP TECHNICAL HEADER HUD
+         ========================================================================= -->
+    <header class="cad-header" id="cadHeader">
+        <div class="cad-branding">
+            <div class="cad-logo">
+                <span class="pulse-indicator" id="engineStatusPulse" title="Engine Online"></span>
+                <span>SCHEMATIC2DSN</span>
+                <span class="cad-logo-tag">CAD RECONSTRUCTION v2.4</span>
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-subtitle">DETERMINISTIC CIRCUIT GRAPH EXTRACTION &bull; CADENCE ORCAD CAPTURE DSN COMPILER</div>
+        </div>
+
+        <div class="header-meta">
+            <!-- Test Suite Verification Badge -->
+            <div class="tech-chip" id="testSuiteBadge" title="Automated PyTest Suite Status">
+                <span class="chip-dot"></span>
+                <span>151/151 TESTS PASSING</span>
+            </div>
+
+            <!-- Engineering Lead Attribution -->
+            <a class="author-link" id="authorProfileLink" href="https://github.com/JatinMakhija-10" target="_blank" rel="noopener noreferrer" title="View GitHub Profile: Jatin Makhija">
+                LEAD: <strong>JATIN MAKHIJA</strong> (@JatinMakhija-10)
+            </a>
+
+            <!-- GitHub Repository CTA Button -->
+            <a class="btn-github" id="githubRepoBtn" href="https://github.com/JatinMakhija-10/Schematic2DSN" target="_blank" rel="noopener noreferrer" title="View Schematic2DSN Repository on GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>GITHUB // REPO</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         MAIN CAD WORKSPACE GRID (3 COLUMNS)
+         ========================================================================= -->
+    <main class="cad-workspace">
+
+        <!-- ---------------------------------------------------------------------
+             LEFT COLUMN: PIPELINE CONTROLS & BENCHMARK INGESTION
+             --------------------------------------------------------------------- -->
+        <aside class="panel panel-left" id="leftPanel">
+            <div class="panel-header">
+                <span>[01 // WORKBENCH CONTROLS]</span>
+                <span class="panel-badge">IR ENGINE</span>
+            </div>
+
+            <div class="panel-content">
+                <!-- Preset Benchmark Selector -->
+                <div class="section-label">SELECT BENCHMARK CIRCUIT</div>
+                <select class="tech-select" id="circuitSelector" aria-label="Select Benchmark Circuit">
+                    <option value="voltage_divider">01 // Voltage Divider (R1, R2, VCC, GND)</option>
+                    <option value="rc_filter">02 // RC Low-Pass Filter (R1, C1, VCC, GND)</option>
+                    <option value="led_driver">03 // LED Driver (R1, D1, VCC, GND)</option>
+                    <option value="inverting_opamp">04 // Inverting Op-Amp (TL072, Rin, Rfb)</option>
+                    <option value="common_emitter">05 // Common Emitter BJT (Q1, Rc, Rb, Re)</option>
+                    <option value="bjt_astable">06 // Astable Multivibrator (Q1, Q2, 4R, 2C)</option>
+                    <option value="h_bridge">07 // H-Bridge Motor Driver (4 FETs, 4 Diodes)</option>
+                    <option value="diff_amp">08 // Differential Amp Pair (TL072, Matched 4R)</option>
+                    <option value="bandpass_filter">09 // Active Bandpass Filter (U1, RLC Tank)</option>
+                    <option value="timer_555_astable">10 // NE555 Astable Timer Clock (8-Pin IC, Timing R-C)</option>
+                    <option value="buck_converter">11 // LM2596 Buck Step-Down (5-Pin VReg, Schottky, Inductor)</option>
+                    <option value="mcu_minimum_system">12 // MCU System ATmega328P (28-Pin IC, Crystal, Reset, UART)</option>
+                </select>
+
+                <div class="btn-group-row">
+                    <button class="btn-action btn-primary" id="btnLoadCircuit" title="Load selected circuit topology">
+                        LOAD CIRCUIT
+                    </button>
+                    <button class="btn-action btn-secondary" id="btnResetView" title="Reset zoom and center view">
+                        FIT VIEW
+                    </button>
+                </div>
+
+                <!-- File Drag and Drop Ingestion Dropzone -->
+                <div class="section-label" style="margin-top: 16px;">DRAG &amp; DROP INGESTION PORT</div>
+                <div class="dropzone" id="dropZone" tabindex="0" role="button" aria-label="Drop schematic file or click to upload">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <div class="drop-text">DROP JSON / IMAGE / PDF</div>
+                    <div class="drop-sub">Synthesizes IR &bull; Auto-Routes Nets</div>
+                    <input type="file" id="fileInput" accept=".json,.png,.jpg,.jpeg,.pdf" style="display: none;" />
+                </div>
+
+                <!-- Compilation Protocol & Tcl Mode Selection -->
+                <div class="section-label" style="margin-top: 16px;">COMPILATION PROTOCOL</div>
+                <div class="radio-box-group">
+                    <label class="radio-option">
+                        <input type="radio" name="routingMode" value="A" id="modeARadio" checked>
+                        <div class="radio-content">
+                            <span class="radio-title">MODE A: STUBS + NET ALIASES</span>
+                            <span class="radio-desc">Robust OrCAD Capture compatibility</span>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="routingMode" value="B" id="modeBRadio">
+                        <div class="radio-content">
+                            <span class="radio-title">MODE B: ROUTED POLYLINES</span>
+                            <span class="radio-desc">Clean continuous visual schematics</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Telemetry KPI Dashboard Cards -->
+                <div class="section-label" style="margin-top: 16px;">EXTRACTION TELEMETRY</div>
+                <div class="telemetry-grid">
+                    <div class="telemetry-card">
+                        <div class="t-label">[01 // PARTS]</div>
+                        <div class="t-val" id="kpiComponents">04</div>
+                    </div>
+                    <div class="telemetry-card">
+                        <div class="t-label">[02 // NETS]</div>
+                        <div class="t-val" id="kpiNets">03</div>
+                    </div>
+                    <div class="telemetry-card">
+                        <div class="t-label">[03 // CONFIDENCE]</div>
+                        <div class="t-val" id="kpiConfidence">100%</div>
+                    </div>
+                    <div class="telemetry-card" id="kpiErcCard">
+                        <div class="t-label">[04 // ERC FLAGS]</div>
+                        <div class="t-val" id="kpiErcWarnings">00</div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Stage Execution Stepper HUD -->
+                <div class="section-label">STAGE EXECUTION MATRIX (S1-S8)</div>
+                <div class="stage-stepper" id="stageStepper">
+                    <div class="stage-item completed" data-stage="S1">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S1</span>
+                        <span class="s-name">Vector Ingestion &amp; Render</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S2">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S2</span>
+                        <span class="s-name">RapidOCR Text Extraction</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S3">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S3</span>
+                        <span class="s-name">Symbol Heuristics &amp; Detection</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S4">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S4</span>
+                        <span class="s-name">Orthogonal Wire Tracing</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S5">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S5</span>
+                        <span class="s-name">Junction Matrix &amp; Terminals</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S6">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S6</span>
+                        <span class="s-name">Topological Graph Synthesis</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S7">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S7</span>
+                        <span class="s-name">Electrical Rules Check (ERC)</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                    <div class="stage-item completed" data-stage="S8">
+                        <span class="s-dot"></span>
+                        <span class="s-id">S8</span>
+                        <span class="s-name">Cadence OrCAD Tcl Compiler</span>
+                        <span class="s-status">PASS</span>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- ---------------------------------------------------------------------
+             CENTER COLUMN: HIGH-DPI INTERACTIVE CAD VIEWPORT
+             --------------------------------------------------------------------- -->
+        <section class="cad-viewport" id="centerViewport">
+            <!-- CAD Viewport Toolbar -->
+            <div class="viewport-toolbar" id="canvasToolbar">
+                <div class="toolbar-group">
+                    <span class="toolbar-label">VIEWPORT //</span>
+                    <button class="tool-btn active" id="btnToggleGrid" title="Toggle Background CAD Grid">GRID</button>
+                    <button class="tool-btn active" id="btnToggleComponents" title="Toggle Components Layer">PARTS</button>
+                    <button class="tool-btn active" id="btnToggleWires" title="Toggle Routed Wires Layer">WIRES</button>
+                    <button class="tool-btn active" id="btnTogglePins" title="Toggle Pin Anchors & Labels">PINS</button>
+                    <button class="tool-btn active" id="btnToggleNets" title="Toggle Net Names">NET LABELS</button>
+                </div>
+
+                <div class="toolbar-group">
+                    <span class="toolbar-label" id="zoomDisplay">ZOOM: 100%</span>
+                    <button class="tool-btn" id="btnZoomIn" title="Zoom in">+</button>
+                    <button class="tool-btn" id="btnZoomOut" title="Zoom out">-</button>
+                    <button class="tool-btn" id="btnZoomFit" title="Fit to Screen">FIT</button>
+                    <button class="tool-btn" id="btnExportSvg" title="Export as Vector SVG">SVG</button>
+                    <button class="tool-btn" id="btnExportPng" title="Export as High-Res PNG">PNG</button>
+                </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="canvas-container" id="canvasContainer">
+                <canvas id="schematicCanvas"></canvas>
+
+                <!-- Floating Canvas HUD Overlay -->
+                <div class="hud-overlay" id="hudOverlay">
+                    <span id="hudCoords">CURSOR: (X: ----, Y: ----) MILS</span> &bull;
+                    <span id="hudZoom">SCALE: 100%</span> &bull;
+                    <span id="hudSnap">GRID SNAP: 100 MIL</span> &bull;
+                    <span id="hudSelected">TARGET: NONE</span>
+                </div>
+
+                <!-- Floating Element Inspector Tooltip -->
+                <div class="floating-tooltip" id="elementTooltip" style="display: none;">
+                    <div class="tooltip-header" id="tooltipHeader">COMPONENT</div>
+                    <div class="tooltip-body" id="tooltipBody"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------------------------------------------------------------
+             RIGHT COLUMN: PROPERTIES, BOM, NETLIST, ERC, ORCAD TCL TERMINAL
+             --------------------------------------------------------------------- -->
+        <aside class="panel panel-right" id="rightPanel">
+            <!-- Tab Navigation Header -->
+            <div class="tabs-header" id="inspectorTabsHeader">
+                <button class="tab-btn active" data-tab="tab-components" id="tabBtnComponents">BOM</button>
+                <button class="tab-btn" data-tab="tab-netlist" id="tabBtnNetlist">NETS</button>
+                <button class="tab-btn" data-tab="tab-erc" id="tabBtnErc">ERC</button>
+                <button class="tab-btn" data-tab="tab-tcl" id="tabBtnTcl">ORCAD TCL</button>
+                <button class="tab-btn" data-tab="tab-ir" id="tabBtnIr">JSON IR</button>
+            </div>
+
+            <!-- Tab 1: Components & BOM Inspector -->
+            <div class="tab-pane active" id="tab-components">
+                <div class="panel-section-title">BILL OF MATERIALS (BOM)</div>
+                <input type="text" class="tech-input" id="bomSearchInput" placeholder="Filter by RefDes, Value, or Class..." />
+
+                <div class="table-container" style="margin-top: 8px;">
+                    <table class="cad-table" id="bomTable">
+                        <thead>
+                            <tr>
+                                <th>REFDES</th>
+                                <th>CLASS</th>
+                                <th>VALUE</th>
+                                <th>PINS</th>
+                                <th>MILS (X, Y)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bomTableBody">
+                            <!-- Populated dynamically by app.js -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="panel-section-title" style="margin-top: 18px;">ACTIVE ELEMENT PROPERTIES</div>
+                <div class="property-sheet" id="propertySheet">
+                    <div class="empty-hint">Click any component or net in the viewport to inspect electrical properties.</div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Netlist & Graph Topology -->
+            <div class="tab-pane" id="tab-netlist">
+                <div class="panel-section-title">TOPOLOGICAL NETWORKS</div>
+                <input type="text" class="tech-input" id="netSearchInput" placeholder="Filter nets by name or pin..." />
+
+                <div class="table-container" style="margin-top: 8px;">
+                    <table class="cad-table" id="netTable">
+                        <thead>
+                            <tr>
+                                <th>NET NAME</th>
+                                <th>PINS</th>
+                                <th>FANOUT</th>
+                                <th>TYPE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="netTableBody">
+                            <!-- Populated dynamically by app.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: Electrical Rules Check (ERC) -->
+            <div class="tab-pane" id="tab-erc">
+                <div class="panel-section-title">ERC DIAGNOSTIC ENGINE</div>
+                <div id="ercResultsContainer">
+                    <!-- Populated dynamically by app.js -->
+                </div>
+
+                <div class="panel-section-title" style="margin-top: 18px;">ELECTRICAL INTEGRITY RULES</div>
+                <div class="integrity-card">
+                    <div class="i-row"><span>R1: FLOATING TERMINAL DETECTOR</span><strong class="text-cyan">ACTIVE</strong></div>
+                    <div class="i-row"><span>R2: SINGLE-PIN NET ANOMALY</span><strong class="text-cyan">ACTIVE</strong></div>
+                    <div class="i-row"><span>R3: ORTHOGONAL 100-MIL GRID SNAP</span><strong class="text-cyan">ACTIVE</strong></div>
+                    <div class="i-row"><span>R4: POWER RAIL POLARITY INTEGRITY</span><strong class="text-cyan">ACTIVE</strong></div>
+                    <div class="i-row"><span>R5: PART RECTANGLE COLLISION DETECT</span><strong class="text-cyan">ACTIVE</strong></div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Cadence OrCAD Capture Tcl Console -->
+            <div class="tab-pane" id="tab-tcl">
+                <div class="panel-section-title">CADENCE ORCAD CAPTURE TCL SCRIPT</div>
+                <div class="tcl-controls-row">
+                    <input type="text" class="tech-input" id="tclLibPathInput" value="orcad/library/COMPETITION.olb" placeholder="Library Path (.olb)" />
+                    <button class="btn-action btn-primary" id="btnRecompileTcl" style="margin-top: 0; width: auto; padding: 6px 12px;">COMPILE</button>
+                </div>
+
+                <textarea class="code-box" id="tclCodeArea" readonly spellcheck="false"></textarea>
+
+                <div class="btn-group-row" style="margin-top: 8px;">
+                    <button class="btn-action btn-primary" id="btnCopyTcl">COPY TCL</button>
+                    <button class="btn-action btn-secondary" id="btnDownloadTcl">DOWNLOAD .TCL</button>
+                </div>
+            </div>
+
+            <!-- Tab 5: JSON Intermediate Representation (IR) -->
+            <div class="tab-pane" id="tab-ir">
+                <div class="panel-section-title">CANONICAL DESIGNIR JSON</div>
+                <textarea class="code-box" id="jsonIrCodeArea" readonly spellcheck="false"></textarea>
+
+                <div class="btn-group-row" style="margin-top: 8px;">
+                    <button class="btn-action btn-primary" id="btnCopyJson">COPY JSON</button>
+                    <button class="btn-action btn-secondary" id="btnDownloadJson">DOWNLOAD .JSON</button>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- =========================================================================
+         BOTTOM DIAGNOSTIC STATUS BAR
+         ========================================================================= -->
+    <footer class="cad-statusbar" id="cadStatusBar">
+        <div class="status-left">
+            <span class="status-indicator"></span>
+            <span>ENGINE: DETERMINISTIC VECTOR PIPELINE ONLINE</span>
+            <span class="status-sep">|</span>
+            <span id="statusCircuitName">CIRCUIT: VOLTAGE_DIVIDER</span>
+            <span class="status-sep">|</span>
+            <span>GRID: 100-MIL SNAP</span>
+        </div>
+
+        <div class="status-center">
+            <span>AUTHOR: <strong>JATIN MAKHIJA</strong> (<a href="https://github.com/JatinMakhija-10" target="_blank" rel="noopener noreferrer">@JatinMakhija-10</a>)</span>
+            <span class="status-sep">&bull;</span>
+            <a href="https://github.com/JatinMakhija-10/Schematic2DSN" target="_blank" rel="noopener noreferrer">GITHUB.COM/JATINMAKHIJA-10/SCHEMATIC2DSN</a>
+        </div>
+
+        <div class="status-right">
+            <span id="renderLatency">RENDER: 2.8ms</span>
+            <span class="status-sep">|</span>
+            <span>151/151 TESTS VERIFIED</span>
+        </div>
+    </footer>
+
+    <!-- Scripts: Benchmark circuit payload and interactive CAD engine -->
+    <script src="circuits.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

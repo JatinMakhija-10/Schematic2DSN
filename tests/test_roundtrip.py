@@ -27,6 +27,10 @@ CIRCUITS = [
     "led_driver",
     "inverting_opamp",
     "common_emitter",
+    "bjt_astable",
+    "h_bridge",
+    "diff_amp",
+    "bandpass_filter",
 ]
 
 

@@ -25,6 +25,13 @@ GOLDEN_CASES = [
     "led_driver",
     "inverting_opamp",
     "common_emitter",
+    "bjt_astable",
+    "h_bridge",
+    "diff_amp",
+    "bandpass_filter",
+    "timer_555_astable",
+    "buck_converter",
+    "mcu_minimum_system",
 ]
 
 

@@ -1,0 +1,492 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "diff_amp",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3700.0,
+        "y": 2900.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3600.0,
+            "y": 2900.0
+          },
+          "net": "VIN_NEG",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3800.0,
+            "y": 2900.0
+          },
+          "net": "IN_MINUS",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "100k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4400.0,
+        "y": 2700.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4300.0,
+            "y": 2700.0
+          },
+          "net": "IN_MINUS",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4500.0,
+            "y": 2700.0
+          },
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "symbol_class": "RESISTOR",
+      "value": "10k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3700.0,
+        "y": 3100.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3600.0,
+            "y": 3100.0
+          },
+          "net": "VIN_POS",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3800.0,
+            "y": 3100.0
+          },
+          "net": "IN_PLUS",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "symbol_class": "RESISTOR",
+      "value": "100k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 3300.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4100.0,
+            "y": 3300.0
+          },
+          "net": "IN_PLUS",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4300.0,
+            "y": 3300.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "U1",
+      "symbol_class": "OPAMP",
+      "value": "TL072",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "IN_MINUS",
+          "pos": {
+            "x": 4000.0,
+            "y": 2900.0
+          },
+          "net": "IN_MINUS",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "IN_PLUS",
+          "pos": {
+            "x": 4000.0,
+            "y": 3100.0
+          },
+          "net": "IN_PLUS",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "3",
+          "function": "VS_PLUS",
+          "pos": {
+            "x": 4200.0,
+            "y": 2800.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "4",
+          "function": "VS_MINUS",
+          "pos": {
+            "x": 4200.0,
+            "y": 3200.0
+          },
+          "net": "VEE",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "5",
+          "function": "OUT",
+          "pos": {
+            "x": 4400.0,
+            "y": 3000.0
+          },
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 2600.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 2500.0
+          },
+          "net": "VCC",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 3500.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 3600.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "GND2",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4350.0,
+        "y": 3500.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4350.0,
+            "y": 3600.0
+          },
+          "net": "VEE",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VIN_NEG",
+      "auto_named": false,
+      "pins": [
+        [
+          "R1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VIN_NEG",
+          "pos": {
+            "x": 3600.0,
+            "y": 2900.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "VIN_POS",
+      "auto_named": false,
+      "pins": [
+        [
+          "R3",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VIN_POS",
+          "pos": {
+            "x": 3600.0,
+            "y": 3100.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "IN_MINUS",
+      "auto_named": true,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "R2",
+          "1"
+        ],
+        [
+          "U1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "IN_PLUS",
+      "auto_named": true,
+      "pins": [
+        [
+          "R3",
+          "2"
+        ],
+        [
+          "R4",
+          "1"
+        ],
+        [
+          "U1",
+          "2"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VOUT",
+      "auto_named": false,
+      "pins": [
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "U1",
+          "5"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VOUT",
+          "pos": {
+            "x": 4500.0,
+            "y": 3000.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "3"
+        ],
+        [
+          "VCC1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VEE",
+      "auto_named": false,
+      "pins": [
+        [
+          "U1",
+          "4"
+        ],
+        [
+          "GND2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "R4",
+          "2"
+        ],
+        [
+          "GND1",
+          "1"
+        ]
+      ],
+      "labels": []
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}

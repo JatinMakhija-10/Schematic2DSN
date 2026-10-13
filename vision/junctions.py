@@ -178,8 +178,8 @@ def draw_junction_overlay(img_path: str, junctions: JunctionsFile,
     for junc in junctions.items:
         cx, cy = int(junc.pos.x), int(junc.pos.y)
         r = max(4, int(junc.radius))
-        cv2.circle(img, (cx, cy), r, (0, 255, 255), 2)
-        cv2.circle(img, (cx, cy), 2, (0, 200, 200), -1)
+        cv2.circle(img, (cx, cy), r, (233, 165, 14), 2)
+        cv2.circle(img, (cx, cy), 2, (11, 158, 245), -1)
     cv2.imwrite(out_path, img)
 
 

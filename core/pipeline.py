@@ -35,18 +35,21 @@ from core.models import (
 )
 from core.config import DEFAULT_CONFIG
 from core.geometry import CoordTransform, estimate_scale_from_passives
+# Author: Jatin Makhija (@JatinMakhija-10) - https://github.com/JatinMakhija-10/Schematic2DSN
 from vision.ingest import ingest, IngestError
-from orcad.tcl_gen import generate_mode_a
+from orcad.tcl_gen import generate_mode_a, generate_mode_b
 
 
 def run_pipeline(
     input_path: str,
     out_dir: str,
     lib_path: str = "orcad/library/COMPETITION.olb",
-    generate_tcl: bool = True
+    generate_tcl: bool = True,
+    export_mode: str = "A"
 ) -> DesignIR:
     """
     Execute full pipeline end-to-end on a schematic file.
+    export_mode: "A" (stub + net alias) or "B" (routed polylines).
     """
     out_path = Path(out_dir)
     out_path.mkdir(parents=True, exist_ok=True)
@@ -215,29 +218,37 @@ def run_pipeline(
     # -----------------------------------------------------------------------
     if generate_tcl:
         tcl_path = out_path / "design.tcl"
-        generate_mode_a(ir, lib_path=lib_path, output_path=str(tcl_path))
+        if export_mode.upper() == "B":
+            generate_mode_b(ir, lib_path=lib_path, output_path=str(tcl_path))
+        else:
+            generate_mode_a(ir, lib_path=lib_path, output_path=str(tcl_path))
 
     return ir
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="End-to-end Schematic2DSN pipeline")
+    parser = argparse.ArgumentParser(
+        description="End-to-end Schematic2DSN pipeline (by Jatin Makhija - @JatinMakhija-10)"
+    )
     parser.add_argument("input", help="Input schematic PDF or image")
     parser.add_argument("out_dir", help="Output directory")
     parser.add_argument("--lib", default="orcad/library/COMPETITION.olb", help="OrCAD OLB library path")
     parser.add_argument("--no-tcl", action="store_true", help="Do not generate Tcl script")
+    parser.add_argument("--mode-b", action="store_true", help="Generate Mode B routed Tcl instead of Mode A")
     args = parser.parse_args()
 
+    export_mode = "B" if args.mode_b else "A"
     ir = run_pipeline(
         input_path=args.input,
         out_dir=args.out_dir,
         lib_path=args.lib,
-        generate_tcl=not args.no_tcl
+        generate_tcl=not args.no_tcl,
+        export_mode=export_mode
     )
     conf = ir.metadata.confidence if ir.metadata else 0.0
     print(f"[pipeline] Successfully processed {args.input}")
     print(f"[pipeline] Components: {len(ir.components)}, Nets: {len(ir.nets)}, Confidence: {conf:.1%}")
-    print(f"[pipeline] Output saved to {args.out_dir}")
+    print(f"[pipeline] Mode: {export_mode} -> Output saved to {args.out_dir}")
 
 
 if __name__ == "__main__":

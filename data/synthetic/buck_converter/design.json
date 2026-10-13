@@ -1,0 +1,535 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "buck_converter",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "U1",
+      "symbol_class": "REGULATOR",
+      "value": "LM2596-ADJ",
+      "unit": 1,
+      "sub_unit": null,
+      "package": "TO-263-5",
+      "description": "Step-Down Voltage Regulator",
+      "position": {
+        "x": 4200.0,
+        "y": 3000.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "VIN",
+          "pos": {
+            "x": 4050.0,
+            "y": 3060.0
+          },
+          "net": "VIN",
+          "electrical_type": "POWER",
+          "side": "LEFT"
+        },
+        {
+          "number": "2",
+          "function": "OUT",
+          "pos": {
+            "x": 4350.0,
+            "y": 3060.0
+          },
+          "net": "SW_NODE",
+          "electrical_type": "OUTPUT",
+          "side": "RIGHT"
+        },
+        {
+          "number": "3",
+          "function": "GND",
+          "pos": {
+            "x": 4200.0,
+            "y": 2880.0
+          },
+          "net": "GND",
+          "electrical_type": "POWER",
+          "side": "BOTTOM"
+        },
+        {
+          "number": "4",
+          "function": "FB",
+          "pos": {
+            "x": 4350.0,
+            "y": 2960.0
+          },
+          "net": "FB_NODE",
+          "electrical_type": "INPUT",
+          "side": "RIGHT"
+        },
+        {
+          "number": "5",
+          "function": "ON_OFF",
+          "pos": {
+            "x": 4050.0,
+            "y": 2960.0
+          },
+          "net": "GND",
+          "electrical_type": "INPUT",
+          "side": "LEFT"
+        }
+      ]
+    },
+    {
+      "id": "CIN",
+      "symbol_class": "CAPACITOR",
+      "value": "100uF",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3700.0,
+        "y": 3000.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 3700.0,
+            "y": 3100.0
+          },
+          "net": "VIN",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 3700.0,
+            "y": 2900.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "symbol_class": "DIODE",
+      "value": "1N5822",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4450.0,
+        "y": 2750.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "ANODE",
+          "pos": {
+            "x": 4350.0,
+            "y": 2750.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "CATHODE",
+          "pos": {
+            "x": 4550.0,
+            "y": 2750.0
+          },
+          "net": "SW_NODE",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "L1",
+      "symbol_class": "INDUCTOR",
+      "value": "33uH",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4700.0,
+        "y": 3060.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4600.0,
+            "y": 3060.0
+          },
+          "net": "SW_NODE",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4800.0,
+            "y": 3060.0
+          },
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "COUT",
+      "symbol_class": "CAPACITOR",
+      "value": "220uF",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 5100.0,
+        "y": 2800.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 5100.0,
+            "y": 2900.0
+          },
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 5100.0,
+            "y": 2700.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "3.1k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4800.0,
+        "y": 2600.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4800.0,
+            "y": 2700.0
+          },
+          "net": "VOUT",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4800.0,
+            "y": 2500.0
+          },
+          "net": "FB_NODE",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "1.0k",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4800.0,
+        "y": 2300.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4800.0,
+            "y": 2400.0
+          },
+          "net": "FB_NODE",
+          "electrical_type": null,
+          "side": null
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4800.0,
+            "y": 2200.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 3700.0,
+        "y": 3350.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 3700.0,
+            "y": 3250.0
+          },
+          "net": "VIN",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "sub_unit": null,
+      "package": null,
+      "description": null,
+      "position": {
+        "x": 4200.0,
+        "y": 2200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4200.0,
+            "y": 2300.0
+          },
+          "net": "GND",
+          "electrical_type": null,
+          "side": null
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VIN",
+      "auto_named": false,
+      "pins": [
+        [
+          "VCC1",
+          "1"
+        ],
+        [
+          "CIN",
+          "1"
+        ],
+        [
+          "U1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VIN_24V",
+          "pos": {
+            "x": 3650.0,
+            "y": 3350.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "SW_NODE",
+      "auto_named": true,
+      "pins": [
+        [
+          "U1",
+          "2"
+        ],
+        [
+          "D1",
+          "2"
+        ],
+        [
+          "L1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "VOUT",
+      "auto_named": false,
+      "pins": [
+        [
+          "L1",
+          "2"
+        ],
+        [
+          "COUT",
+          "1"
+        ],
+        [
+          "R1",
+          "1"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "VOUT_5V",
+          "pos": {
+            "x": 5150.0,
+            "y": 3100.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "FB_NODE",
+      "auto_named": true,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "R2",
+          "1"
+        ],
+        [
+          "U1",
+          "4"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "GND1",
+          "1"
+        ],
+        [
+          "CIN",
+          "2"
+        ],
+        [
+          "U1",
+          "3"
+        ],
+        [
+          "U1",
+          "5"
+        ],
+        [
+          "D1",
+          "1"
+        ],
+        [
+          "COUT",
+          "2"
+        ],
+        [
+          "R2",
+          "2"
+        ]
+      ],
+      "labels": [
+        {
+          "text": "GND",
+          "pos": {
+            "x": 4200.0,
+            "y": 2200.0
+          }
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}

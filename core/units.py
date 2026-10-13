@@ -37,13 +37,20 @@ def normalize_value(raw: str) -> str:
     # Leading dot -> '0.'
     s = re.sub(r'^(\.)', '0.', s)
 
-    # 4k7 -> 4.7k  (letter-separated decimal)
-    m = re.match(r'^(\d+)([kKmMnNpPuUfF])(\d+)([A-Za-zΩ]*)$', s)
+    # 4k7 -> 4.7k, 4R7 -> 4.7ohm  (letter-separated decimal)
+    m = re.match(r'^(\d+)([kKmMnNpPuUfFrR])(\d+)([A-Za-zΩ]*)$', s)
     if m:
         int_part, sep, frac, suffix = m.groups()
-        sep_norm = sep.upper() if sep in ('k', 'K') else sep
-        sep_norm = 'k' if sep in ('k', 'K') else sep
-        s = f'{int_part}.{frac}{sep}{suffix}'
+        if sep in ('k', 'K'):
+            sep_norm = 'k'
+        elif sep in ('r', 'R'):
+            sep_norm = 'ohm'
+        else:
+            sep_norm = sep
+        s = f'{int_part}.{frac}{sep_norm}{suffix}'
+
+    # Suffix R -> ohm (e.g. 100R -> 100ohm)
+    s = re.sub(r'^(\d+(?:\.\d+)?)[Rr]$', r'\1ohm', s)
 
     # Normalize case: K -> k
     s = s.replace('K', 'k')
@@ -51,22 +58,42 @@ def normalize_value(raw: str) -> str:
     return s
 
 
-REFDES_PATTERN = re.compile(r'^[A-Z]{1,3}[0-9]{1,3}[A-Z]?$')
+REFDES_PATTERN = re.compile(r'^[A-Z]{1,5}[0-9]{1,4}[A-Z]?$')
+
+
+def validate_refdes(s: str) -> bool:
+    """Return True if string is a valid Reference Designator (e.g. R1, C2, XTAL1, U1A)."""
+    return bool(REFDES_PATTERN.match(s))
 
 CLASS_PREFIX = {
-    'RESISTOR':  {'R'},
-    'CAPACITOR': {'C'},
-    'INDUCTOR':  {'L'},
-    'DIODE':     {'D'},
-    'LED':       {'D', 'LED'},
-    'NPN':       {'Q'},
-    'PNP':       {'Q'},
-    'NMOS':      {'Q', 'M'},
-    'PMOS':      {'Q', 'M'},
-    'OPAMP':     {'U'},
-    'CONNECTOR': {'J', 'P'},
-    'GROUND':    set(),
-    'VCC':       set(),
+    'RESISTOR':         {'R'},
+    'CAPACITOR':        {'C'},
+    'INDUCTOR':         {'L'},
+    'DIODE':            {'D'},
+    'LED':              {'D', 'LED'},
+    'NPN':              {'Q'},
+    'PNP':              {'Q'},
+    'NMOS':             {'Q', 'M'},
+    'PMOS':             {'Q', 'M'},
+    'OPAMP':            {'U'},
+    'CONNECTOR':        {'J', 'P', 'CONN'},
+    'GROUND':           set(),
+    'VCC':              set(),
+    'IC':               {'U', 'IC'},
+    'MICROCONTROLLER':  {'U', 'MCU', 'IC'},
+    'MCU':              {'U', 'MCU', 'IC'},
+    'TIMER_555':        {'U', 'IC'},
+    'REGULATOR':        {'U', 'VR', 'REG'},
+    'CRYSTAL':          {'Y', 'X', 'XTAL'},
+    'TRANSFORMER':      {'T', 'TR', 'XFMR'},
+    'RELAY':            {'K', 'RL', 'RY'},
+    'SWITCH':           {'SW', 'S'},
+    'GATE_AND':         {'U'},
+    'GATE_OR':          {'U'},
+    'GATE_NAND':        {'U'},
+    'GATE_NOR':         {'U'},
+    'GATE_XOR':         {'U'},
+    'GATE_NOT':         {'U'},
 }
 
 

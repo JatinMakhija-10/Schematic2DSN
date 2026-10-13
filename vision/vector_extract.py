@@ -54,7 +54,7 @@ def extract_vector_text(pdf_path: str) -> TextsFile:
     Extract text spans from a vector PDF using PyMuPDF get_text("dict").
     Returns a TextsFile with one TextItem per span.
     """
-    import fitz
+    import pymupdf as fitz
 
     doc = fitz.open(pdf_path)
     page = doc[0]
@@ -209,7 +209,7 @@ def extract_vector_wires(pdf_path: str, symbol_bboxes: List[BBox] | None = None)
     -------
     WiresFile
     """
-    import fitz
+    import pymupdf as fitz
 
     _reset_counter()
     cfg = DEFAULT_CONFIG.wire
@@ -290,9 +290,9 @@ def draw_text_overlay(img_path: str, texts: TextsFile, out_path: str) -> None:
     for item in texts.items:
         x0, y0, x1, y1 = (int(item.bbox.x0), int(item.bbox.y0),
                            int(item.bbox.x1), int(item.bbox.y1))
-        cv2.rectangle(img, (x0, y0), (x1, y1), (0, 200, 0), 1)
+        cv2.rectangle(img, (x0, y0), (x1, y1), (233, 165, 14), 1)
         cv2.putText(img, item.text[:20], (x0, max(y0 - 2, 10)),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 150, 0), 1)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.35, (233, 165, 14), 1)
 
     cv2.imwrite(out_path, img)
 

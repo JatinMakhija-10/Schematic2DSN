@@ -88,7 +88,7 @@ def ingest(input_path: str, out_dir: str) -> PageMeta:
 
 def _ingest_pdf(path: Path, out: Path, cfg) -> PageMeta:
     try:
-        import fitz  # PyMuPDF
+        import pymupdf as fitz
     except ImportError:
         raise ImportError("PyMuPDF not installed. Run: pip install PyMuPDF")
 
@@ -100,7 +100,8 @@ def _ingest_pdf(path: Path, out: Path, cfg) -> PageMeta:
 
     # Detect vector vs raster
     drawings = page.get_drawings()
-    is_vector = len(drawings) >= cfg.min_vector_paths
+    total_drawing_items = sum(len(d.get("items", [])) for d in drawings)
+    is_vector = (len(drawings) >= cfg.min_vector_paths) or (total_drawing_items >= cfg.min_vector_paths)
 
     dpi = cfg.render_dpi
     mat = fitz.Matrix(dpi / 72, dpi / 72)

@@ -1,0 +1,482 @@
+{
+  "schema_version": "1.0",
+  "design": {
+    "name": "bjt_astable",
+    "page": 1,
+    "units": "mils",
+    "grid": 100
+  },
+  "components": [
+    {
+      "id": "R1",
+      "symbol_class": "RESISTOR",
+      "value": "1k",
+      "unit": 1,
+      "position": {
+        "x": 3800.0,
+        "y": 2600.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 3800.0,
+            "y": 2700.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 3800.0,
+            "y": 2500.0
+          },
+          "net": "NET_C1"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "symbol_class": "RESISTOR",
+      "value": "47k",
+      "unit": 1,
+      "position": {
+        "x": 4100.0,
+        "y": 2600.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4100.0,
+            "y": 2700.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4100.0,
+            "y": 2500.0
+          },
+          "net": "NET_B1"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "symbol_class": "RESISTOR",
+      "value": "47k",
+      "unit": 1,
+      "position": {
+        "x": 4400.0,
+        "y": 2600.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4400.0,
+            "y": 2700.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4400.0,
+            "y": 2500.0
+          },
+          "net": "NET_B2"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "symbol_class": "RESISTOR",
+      "value": "1k",
+      "unit": 1,
+      "position": {
+        "x": 4700.0,
+        "y": 2600.0
+      },
+      "rotation": 90,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "A",
+          "pos": {
+            "x": 4700.0,
+            "y": 2700.0
+          },
+          "net": "VCC"
+        },
+        {
+          "number": "2",
+          "function": "B",
+          "pos": {
+            "x": 4700.0,
+            "y": 2500.0
+          },
+          "net": "NET_C2"
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "symbol_class": "CAPACITOR",
+      "value": "10uF",
+      "unit": 1,
+      "position": {
+        "x": 4000.0,
+        "y": 2900.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 3900.0,
+            "y": 2900.0
+          },
+          "net": "NET_C1"
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 4100.0,
+            "y": 2900.0
+          },
+          "net": "NET_B2"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "symbol_class": "CAPACITOR",
+      "value": "10uF",
+      "unit": 1,
+      "position": {
+        "x": 4500.0,
+        "y": 2900.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PLUS",
+          "pos": {
+            "x": 4400.0,
+            "y": 2900.0
+          },
+          "net": "NET_C2"
+        },
+        {
+          "number": "2",
+          "function": "MINUS",
+          "pos": {
+            "x": 4600.0,
+            "y": 2900.0
+          },
+          "net": "NET_B1"
+        }
+      ]
+    },
+    {
+      "id": "Q1",
+      "symbol_class": "NPN",
+      "value": "2N2222",
+      "unit": 1,
+      "position": {
+        "x": 3900.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "BASE",
+          "pos": {
+            "x": 3750.0,
+            "y": 3200.0
+          },
+          "net": "NET_B1"
+        },
+        {
+          "number": "2",
+          "function": "COLLECTOR",
+          "pos": {
+            "x": 4000.0,
+            "y": 3350.0
+          },
+          "net": "NET_C1"
+        },
+        {
+          "number": "3",
+          "function": "EMITTER",
+          "pos": {
+            "x": 4000.0,
+            "y": 3050.0
+          },
+          "net": "GND"
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "symbol_class": "NPN",
+      "value": "2N2222",
+      "unit": 1,
+      "position": {
+        "x": 4600.0,
+        "y": 3200.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "BASE",
+          "pos": {
+            "x": 4450.0,
+            "y": 3200.0
+          },
+          "net": "NET_B2"
+        },
+        {
+          "number": "2",
+          "function": "COLLECTOR",
+          "pos": {
+            "x": 4700.0,
+            "y": 3350.0
+          },
+          "net": "NET_C2"
+        },
+        {
+          "number": "3",
+          "function": "EMITTER",
+          "pos": {
+            "x": 4700.0,
+            "y": 3050.0
+          },
+          "net": "GND"
+        }
+      ]
+    },
+    {
+      "id": "VCC1",
+      "symbol_class": "VCC",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4250.0,
+        "y": 2400.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4250.0,
+            "y": 2300.0
+          },
+          "net": "VCC"
+        }
+      ]
+    },
+    {
+      "id": "GND1",
+      "symbol_class": "GROUND",
+      "value": "",
+      "unit": 1,
+      "position": {
+        "x": 4250.0,
+        "y": 3500.0
+      },
+      "rotation": 0,
+      "mirror": false,
+      "src_bbox_px": [],
+      "confidence": 1.0,
+      "pins": [
+        {
+          "number": "1",
+          "function": "PWR",
+          "pos": {
+            "x": 4250.0,
+            "y": 3600.0
+          },
+          "net": "GND"
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VCC",
+      "auto_named": false,
+      "pins": [
+        [
+          "R1",
+          "1"
+        ],
+        [
+          "R2",
+          "1"
+        ],
+        [
+          "R3",
+          "1"
+        ],
+        [
+          "R4",
+          "1"
+        ],
+        [
+          "VCC1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "NET_C1",
+      "auto_named": true,
+      "pins": [
+        [
+          "R1",
+          "2"
+        ],
+        [
+          "Q1",
+          "2"
+        ],
+        [
+          "C1",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "NET_B1",
+      "auto_named": true,
+      "pins": [
+        [
+          "R2",
+          "2"
+        ],
+        [
+          "Q1",
+          "1"
+        ],
+        [
+          "C2",
+          "2"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "NET_B2",
+      "auto_named": true,
+      "pins": [
+        [
+          "R3",
+          "2"
+        ],
+        [
+          "Q2",
+          "1"
+        ],
+        [
+          "C1",
+          "2"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "NET_C2",
+      "auto_named": true,
+      "pins": [
+        [
+          "R4",
+          "2"
+        ],
+        [
+          "Q2",
+          "2"
+        ],
+        [
+          "C2",
+          "1"
+        ]
+      ],
+      "labels": []
+    },
+    {
+      "name": "GND",
+      "auto_named": false,
+      "pins": [
+        [
+          "Q1",
+          "3"
+        ],
+        [
+          "Q2",
+          "3"
+        ],
+        [
+          "GND1",
+          "1"
+        ]
+      ],
+      "labels": []
+    }
+  ],
+  "warnings": [],
+  "metadata": {
+    "source": "synthetic",
+    "mode": "vector",
+    "confidence": 1.0,
+    "ocr_confidence": 1.0
+  }
+}
